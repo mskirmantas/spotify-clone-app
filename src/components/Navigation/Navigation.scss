@@ -1,0 +1,18 @@
+.Navigation {
+  padding-top: 20px;
+  color: grey;
+  background-color: #101010;
+  height: calc(100vh - 170px);
+}
+.tab {
+  display: flex;
+  justify-content: flex-start;
+  padding: 5px 30px;
+  p {
+    font-weight: bold;
+  }
+  .anticon {
+    color: grey;
+    padding-right: 10px;
+  }
+}

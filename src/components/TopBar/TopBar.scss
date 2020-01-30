@@ -1,0 +1,27 @@
+.TopBar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 30px;
+  height: 80px;
+
+  background-color: #181818;
+  color: white;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  color: white;
+  font-weight: 500;
+  font-size: 1.75rem;
+  align-items: center;
+  p {
+    margin-bottom: 5px;
+  }
+}
+
+.anticon.logoIcon {
+  color: #1db954;
+  font-size: 25px;
+  padding-left: 10px;
+}
