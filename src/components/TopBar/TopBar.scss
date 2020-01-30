@@ -1,17 +1,23 @@
+@import "../../theme.scss";
+
 .TopBar {
   display: flex;
   justify-content: space-between;
-  padding: 0px 30px;
+  padding: 0px 35px;
   height: 80px;
 
-  background-color: #181818;
-  color: white;
+  background-color: $color-black-ish;
+  color: $color-white;
   align-items: center;
 }
 
 .logo {
   display: flex;
-  color: white;
+  justify-content: center;
+
+  color: $color-white;
+  background-color: $color-black;
+  height: 100%;
   font-weight: 500;
   font-size: 1.75rem;
   align-items: center;
@@ -21,7 +27,7 @@
 }
 
 .anticon.logoIcon {
-  color: #1db954;
-  font-size: 25px;
-  padding-left: 10px;
+  color: $color-white;
+  font-size: 30px;
+  padding-right: 10px;
 }

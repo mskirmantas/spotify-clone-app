@@ -1,18 +1,32 @@
+@import "../../theme.scss";
+
 .Navigation {
-  padding-top: 20px;
-  color: grey;
-  background-color: #101010;
+  background-color: $color-black;
   height: calc(100vh - 170px);
 }
 .tab > :first-child {
   display: flex;
   justify-content: flex-start;
-  padding: 5px 30px;
+  padding: 10px 20px;
   p {
     font-weight: bold;
+    color: $color-light-grey;
+    margin: 0;
   }
   .anticon {
-    color: grey;
+    color: $color-light-grey;
     padding-right: 10px;
+  }
+}
+.tab {
+  padding: 5px 10px;
+  :focus,
+  :active {
+    background-color: $color-dark-grey;
+    border-radius: 5px;
+  }
+
+  :hover {
+    color: $color-white;
   }
 }
