@@ -4,7 +4,7 @@
   background-color: #101010;
   height: calc(100vh - 170px);
 }
-.tab {
+.tab > :first-child {
   display: flex;
   justify-content: flex-start;
   padding: 5px 30px;

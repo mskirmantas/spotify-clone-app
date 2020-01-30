@@ -1,22 +1,29 @@
 import React from "react";
 import "./Navigation.scss";
 
+import { NavLink } from "react-router-dom";
 import { Icon } from "antd";
 
 export const Navigation: React.FC = () => {
   return (
     <div className="Navigation">
       <div className="tab home-tab">
-        <Icon type="home" />
-        <p>Home</p>
+        <NavLink to="/">
+          <Icon type="home" />
+          <p>Home</p>
+        </NavLink>
       </div>
       <div className="tab search-tab">
-        <Icon type="search" />
-        <p>Search</p>
+        <NavLink to="/search">
+          <Icon type="search" />
+          <p>Search</p>
+        </NavLink>
       </div>
       <div className="tab collection-tab">
-        <Icon type="align-right" rotate={90} />
-        <p>Your Library</p>
+        <NavLink to="/collection">
+          <Icon type="align-right" rotate={90} />
+          <p>Your Library</p>
+        </NavLink>
       </div>
     </div>
   );
