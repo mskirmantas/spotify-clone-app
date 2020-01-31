@@ -13,15 +13,15 @@
     color: $color-light-grey;
     margin: 0;
   }
-  .anticon {
-    color: $color-light-grey;
-    padding-right: 10px;
-  }
+}
+.navlink-icon {
+  font-size: 20px;
+  color: $color-light-grey;
+  padding-right: 10px;
 }
 .tab {
   padding: 5px 10px;
-  :focus,
-  :active {
+  :focus {
     background-color: $color-dark-grey;
     border-radius: 5px;
   }

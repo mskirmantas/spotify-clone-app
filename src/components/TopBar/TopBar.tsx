@@ -10,6 +10,7 @@ export const TopBar: React.FC = () => {
       <Sider>
         <div className="logo">
           <Icon type="play-circle" theme="filled" className="logoIcon" />
+
           <p>Spotify</p>
         </div>
       </Sider>

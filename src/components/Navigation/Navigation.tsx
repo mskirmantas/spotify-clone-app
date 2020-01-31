@@ -9,19 +9,19 @@ export const Navigation: React.FC = () => {
     <div className="Navigation">
       <div className="tab home-tab">
         <NavLink to="/">
-          <Icon type="home" />
+          <Icon className="navlink-icon" type="home" />
           <p>Home</p>
         </NavLink>
       </div>
       <div className="tab search-tab">
         <NavLink to="/search">
-          <Icon type="search" />
+          <Icon className="navlink-icon" type="search" />
           <p>Search</p>
         </NavLink>
       </div>
       <div className="tab collection-tab">
         <NavLink to="/collection">
-          <Icon type="align-right" rotate={90} />
+          <Icon className="navlink-icon" type="align-right" rotate={90} />
           <p>Your Library</p>
         </NavLink>
       </div>

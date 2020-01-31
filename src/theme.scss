@@ -1,6 +1,24 @@
+// $color-theme: #d4b60d;
 $color-theme: #1db954;
 $color-black: #101010;
 $color-black-ish: #1a1a1a;
-$color-dark-grey: #292929;
-$color-light-grey: #aaaaaa;
+$color-dark-grey: #292828;
+$color-grey: #575757;
+$color-light-grey: #adadad;
 $color-white: #ffffff;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+::-webkit-scrollbar {
+  width: 16px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: hsla(0, 0%, 100%, 0.3);
+}

@@ -1,16 +1,116 @@
 @import "../../theme.scss";
 
-.now-playing-bar {
+.BottomBar {
   border-top: 1px solid black; // !
   background-color: $color-dark-grey;
   height: 90px;
   width: 100%;
   z-index: 4;
+
+  display: flex;
+  justify-content: space-between;
 }
-.Player {
-  padding: 30px;
+// Display ------------------
+.Display {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 20px;
+  width: 200px;
+  min-width: 200px;
 }
-.anticon {
+h4 {
   color: $color-white;
+}
+h5 {
+  color: $color-light-grey;
+}
+.now-playing {
+  margin-top: auto;
+  margin-bottom: auto;
+  text-align: left;
+}
+.btn-like {
+  margin: auto 0;
+  color: $color-light-grey;
+  font-size: 17px;
+  &:hover {
+    color: $color-white;
+  }
+}
+
+// Player ------------------
+
+.Player {
+  margin-top: 15px;
+  width: 40vw;
+}
+.player-controls {
+  margin-bottom: 8px;
+}
+.player-button {
+  margin: 0px 10px;
+  color: $color-light-grey;
   font-size: 20px;
+  cursor: pointer;
+  &:hover {
+    color: $color-white;
+    transition: 0.1s;
+  }
+}
+.btn-play {
+  padding: 5px 4px 5px 6px;
+  border: 1px solid $color-light-grey;
+  border-radius: 20px;
+
+  color: $color-white;
+  border-color: $color-white;
+}
+.player-button.btn-play:hover {
+  transform: scale(1.1);
+  transition: 0.1s;
+}
+.progress {
+  top: 10px;
+  background-color: $color-grey;
+  position: relative;
+  border-radius: 10px;
+}
+.progress-bar {
+  height: 4px;
+  background-color: $color-theme;
+  width: 53%;
+  border-radius: 10px;
+}
+
+// Volume ------------------
+.VolumeControl {
+  width: 200px;
+  min-width: 200px;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 0px 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+.icon {
+  padding-right: 10px;
+}
+.vol-icon {
+  color: $color-light-grey;
+  font-size: 12px;
+}
+
+.volume {
+  width: 80px;
+  height: 4px;
+  top: 10px;
+  background-color: $color-grey;
+  position: relative;
+  border-radius: 10px;
+}
+.volume-bar {
+  height: 4px;
+  background-color: $color-light-grey;
+  width: 75%;
+  border-radius: 10px;
 }

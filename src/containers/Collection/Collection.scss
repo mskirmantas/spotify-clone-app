@@ -1,6 +1,7 @@
 @import "../../theme.scss";
 
 .Collection {
+  overflow-y: scroll;
   height: 100%;
   background-color: $color-black-ish;
   color: $color-white;
