@@ -4,7 +4,7 @@ import "./Collection.scss";
 export const Collection: React.FC = () => {
   return (
     <div className="Collection">
-      <p>This is YOUR LIBRARY</p>
+      <p>This is: YOUR LIBRARY</p>
     </div>
   );
 };
