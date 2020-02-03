@@ -14,20 +14,53 @@
 .logo {
   display: flex;
   justify-content: center;
-
   color: $color-white;
   background-color: $color-black;
   height: 100%;
   font-weight: 500;
   font-size: 1.75rem;
   align-items: center;
+  &:hover {
+    color: $color-white;
+  }
   p {
-    margin-bottom: 5px;
+    margin: 0;
   }
 }
 
 .anticon.logoIcon {
-  color: $color-white;
+  color: $color-theme;
   font-size: 30px;
   padding-right: 10px;
+}
+
+.history-nav-icon {
+  cursor: pointer;
+  color: $color-light-grey;
+  font-size: 25px;
+  margin: auto 3px;
+  &:hover {
+    color: $color-white;
+  }
+}
+
+.btn-log-out.ant-btn {
+  margin: auto 0px;
+  color: $color-light-grey;
+  background-color: transparent;
+  border-color: $color-light-grey;
+  &:hover {
+    color: $color-dark-grey;
+    background-color: $color-white;
+    border-color: $color-dark-grey;
+  }
+  &:focus,
+  &:active {
+    background-color: $color-theme;
+    color: $color-dark-grey;
+    border-color: transparent;
+  }
+  &[ant-click-animating-without-extra-node]:after {
+    animation: 0s !important;
+  }
 }

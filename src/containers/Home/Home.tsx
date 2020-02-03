@@ -1,14 +1,15 @@
 import React from "react";
 import "./Home.scss";
-import { Card } from "../../components/Card";
-import { Row, Col } from "antd";
+
+// import { Card } from "../../components/Card";
+// import { Row, Col } from "antd";
 
 export const Home: React.FC = () => {
   return (
     <div className="Home">
       <p>This is HOME PAGE</p>
       <div className="artists">
-        <Row>
+        {/* <Row>
           <Col span={4}>
             <Card />
           </Col>
@@ -69,7 +70,7 @@ export const Home: React.FC = () => {
           <Col span={4}>
             <Card />
           </Col>
-        </Row>
+        </Row> */}
       </div>
     </div>
   );

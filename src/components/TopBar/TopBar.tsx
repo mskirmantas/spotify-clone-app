@@ -1,28 +1,30 @@
 import React from "react";
 import "./TopBar.scss";
 
-import { Layout, Icon } from "antd";
+import { NavLink } from "react-router-dom";
+import { Layout, Icon, Button } from "antd";
 const { Sider, Content } = Layout;
 
 export const TopBar: React.FC = () => {
   return (
     <Layout>
       <Sider>
-        <div className="logo">
+        <NavLink className="logo" to="/">
           <Icon type="play-circle" theme="filled" className="logoIcon" />
-
           <p>Spotify</p>
-        </div>
+        </NavLink>
       </Sider>
 
       <Content>
         <div className="TopBar">
-          <div className="otherContent">
-            <Icon type="left" />
-            <Icon type="right" />
+          <div className="history-navigation">
+            <Icon className="history-nav-icon" type="left" />
+            <Icon className="history-nav-icon" type="right" />
           </div>
           <div className="profile">
-            <p>Log out</p>
+            <Button className="btn-log-out" size="default" shape="round">
+              <b>Log Out</b>
+            </Button>
           </div>
         </div>
       </Content>

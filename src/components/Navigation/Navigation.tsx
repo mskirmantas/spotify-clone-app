@@ -7,20 +7,20 @@ import { Icon } from "antd";
 export const Navigation: React.FC = () => {
   return (
     <div className="Navigation">
-      <div className="tab home-tab">
-        <NavLink to="/">
+      <div className="home-tab">
+        <NavLink className="tab " to="/">
           <Icon className="navlink-icon" type="home" />
           <p>Home</p>
         </NavLink>
       </div>
-      <div className="tab search-tab">
-        <NavLink to="/search">
+      <div className="search-tab">
+        <NavLink className="tab" to="/search">
           <Icon className="navlink-icon" type="search" />
           <p>Search</p>
         </NavLink>
       </div>
-      <div className="tab collection-tab">
-        <NavLink to="/collection">
+      <div className="collection-tab">
+        <NavLink className="tab" to="/collection">
           <Icon className="navlink-icon" type="align-right" rotate={90} />
           <p>Your Library</p>
         </NavLink>

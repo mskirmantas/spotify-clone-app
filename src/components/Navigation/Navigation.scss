@@ -2,31 +2,28 @@
 
 .Navigation {
   background-color: $color-black;
+  padding: 0px 15px;
   height: calc(100vh - 170px);
 }
-.tab > :first-child {
+.tab {
   display: flex;
   justify-content: flex-start;
-  padding: 10px 20px;
+  padding: 10px;
+  color: $color-light-grey;
   p {
     font-weight: bold;
-    color: $color-light-grey;
     margin: 0;
+  }
+  &:focus {
+    color: $color-white;
+    background-color: $color-dark-grey;
+    border-radius: 5px;
+  }
+  &:hover {
+    color: $color-white;
   }
 }
 .navlink-icon {
   font-size: 20px;
-  color: $color-light-grey;
-  padding-right: 10px;
-}
-.tab {
-  padding: 5px 10px;
-  :focus {
-    background-color: $color-dark-grey;
-    border-radius: 5px;
-  }
-
-  :hover {
-    color: $color-white;
-  }
+  padding-right: 15px;
 }

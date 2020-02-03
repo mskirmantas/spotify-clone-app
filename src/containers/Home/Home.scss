@@ -3,7 +3,7 @@
 .Home {
   overflow-y: scroll;
   height: calc(100vh - 170px);
-  background-color: $color-black-ish;
+  background-image: linear-gradient($color-black-ish, $color-dark-grey-2);
   color: $color-white;
   p {
     font-size: 50px;
