@@ -40,18 +40,23 @@ export const FileUpload: React.FC = () => {
           setError(error);
         },
         () => {
-          Storage.ref("audioFiles/")
-            .child(song.name)
-            .getDownloadURL()
-            .then(url => {
-              console.log(url);
-              setProgress(0);
-              const fileRef = Database.ref("file");
-              fileRef.push({
-                song: url,
+          uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
+            song.url = downloadURL;
+            console.log(song.name);
+            console.log(song.url);
+            setProgress(0);
+            Database.collection("files")
+              .add({
+                song: song.url,
                 songName: song.name
+              })
+              .then(function(docRef) {
+                console.log("Document written with ID: ", docRef.id);
+              })
+              .catch(function(error) {
+                console.error("Error adding document: ", error);
               });
-            });
+          });
         }
       );
     } else {

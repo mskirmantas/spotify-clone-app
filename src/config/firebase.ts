@@ -1,17 +1,17 @@
 import firebase from "firebase";
-import "firebase/storage";
+require("firebase/firestore");
 
-var firebaseConfig = {
-  apiKey: "AIzaSyDvLLqTNKrF7f4KFuPFlssUzTj43cMwVJQ",
-  authDomain: "spotify-app-68cf3.firebaseapp.com",
-  databaseURL: "https://spotify-app-68cf3.firebaseio.com",
-  projectId: "spotify-app-68cf3",
-  storageBucket: "spotify-app-68cf3.appspot.com",
-  messagingSenderId: "33781073093",
-  appId: "1:33781073093:web:57c37380b928281e891cac",
-  measurementId: "G-Z7PY8BHMTQ"
+const firebaseConfig = {
+  apiKey: "AIzaSyB5e-Rrpy7djS2XQhu10xm8v2jaf1YhlM8",
+  authDomain: "spotify-player-react.firebaseapp.com",
+  databaseURL: "https://spotify-player-react.firebaseio.com",
+  projectId: "spotify-player-react",
+  storageBucket: "spotify-player-react.appspot.com",
+  messagingSenderId: "119673124647",
+  appId: "1:119673124647:web:5f684cc3de255fede1db02"
 };
 
-export const Firebase = firebase.initializeApp(firebaseConfig);
-export const Database = firebase.database();
+firebase.initializeApp(firebaseConfig);
+
+export const Database = firebase.firestore();
 export const Storage = firebase.storage();
