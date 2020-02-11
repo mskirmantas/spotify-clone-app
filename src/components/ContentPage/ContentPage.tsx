@@ -10,11 +10,35 @@ import { FileUpload } from "../../containers/FileUpload";
 //Libraries
 import { Route, Switch } from "react-router-dom";
 
-export const ContentPage: React.FC = () => {
+interface Props {
+  tracks: ITrack[];
+  activeTrackID: any;
+  onTrackClick: any;
+}
+
+interface ITrack {
+  artist: string;
+  album: string;
+  id: string;
+  time: string;
+  title: string;
+  url: string;
+}
+
+export const ContentPage: React.FC<Props> = props => {
   return (
     <div className="ContentPage">
       <Switch>
-        <Route path="/home" component={Home} />
+        <Route
+          path="/home"
+          render={Props => (
+            <Home
+              tracks={props.tracks}
+              activeTrackID={props.activeTrackID}
+              onTrackClick={props.onTrackClick}
+            />
+          )}
+        />
         <Route path="/search" component={Search} />
         <Route path="/collection" component={Collection} />
         <Route path="/upload" component={FileUpload} />

@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./App.scss";
+
+import { Database } from "./config/firebase";
 
 // Components
 import { TopBar } from "./components/TopBar";
@@ -12,7 +14,39 @@ import { BrowserRouter } from "react-router-dom";
 import { Layout } from "antd";
 const { Sider, Content } = Layout;
 
+interface ITrack {
+  artist: string;
+  album: string;
+  id: string;
+  time: string;
+  title: string;
+  url: string;
+}
+
 const App: React.FC = () => {
+  const [tracks, setTracks] = useState<ITrack[]>([]);
+  const [activeTrackID, setActiveTrackID] = useState<string | undefined>(
+    undefined
+  );
+
+  useEffect(() => {
+    Database.collection("files")
+      .get()
+      .then(snapshot => {
+        const musicFiles: any = [];
+        snapshot.forEach(doc => {
+          const data = doc.data();
+          musicFiles.push(data);
+        });
+        setTracks(musicFiles);
+      })
+      .catch(error => console.log(error));
+  }, []);
+
+  const handleSetActiveTrack = (trackID: string | undefined) => {
+    setActiveTrackID(trackID);
+  };
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -23,10 +57,14 @@ const App: React.FC = () => {
               <Navigation />
             </Sider>
             <Content>
-              <ContentPage />
+              <ContentPage
+                tracks={tracks}
+                activeTrackID={activeTrackID}
+                onTrackClick={handleSetActiveTrack}
+              />
             </Content>
           </Layout>
-          <BottomBar />
+          <BottomBar activeTrack={tracks.find(t => t.id === activeTrackID)} />
         </Layout>
       </div>
     </BrowserRouter>

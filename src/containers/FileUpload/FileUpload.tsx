@@ -47,8 +47,12 @@ export const FileUpload: React.FC = () => {
             setProgress(0);
             Database.collection("files")
               .add({
-                song: song.url,
-                songName: song.name
+                id: "",
+                artist: "",
+                album: "",
+                time: "",
+                url: song.url,
+                title: song.name
               })
               .then(function(docRef) {
                 console.log("Document written with ID: ", docRef.id);
@@ -67,6 +71,7 @@ export const FileUpload: React.FC = () => {
   return (
     <div className="FileUpload">
       <input type="file" onChange={handleChange} />
+
       <button onClick={handleUpload} style={{ color: "black" }}>
         Upload
       </button>

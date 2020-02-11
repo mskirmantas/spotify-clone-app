@@ -3,14 +3,30 @@ import "./BottomBar.scss";
 
 import { Icon } from "antd";
 
-const Display: React.FC = () => {
+interface BottomBarProps {
+  activeTrack: ITrack | undefined;
+}
+interface ITrack {
+  artist: string;
+  album: string;
+  id: string;
+  time: string;
+  title: string;
+  url: string;
+}
+
+const Display: React.FC<BottomBarProps> = props => {
   return (
-    <div className="Display">
-      <div className="now-playing">
-        <h4>Title</h4>
-        <h5>Artist Name</h5>
-      </div>
-      <Icon className="btn-like" type="heart" />
+    <div className="display-container">
+      {props.activeTrack ? (
+        <div className="Display">
+          <div className="now-playing">
+            <h4>{props.activeTrack.title}</h4>
+            <h5>{props.activeTrack.artist}</h5>
+          </div>
+          <Icon className="btn-like" type="heart" />
+        </div>
+      ) : null}
     </div>
   );
 };
@@ -48,10 +64,10 @@ const VolumeControl: React.FC = () => {
   );
 };
 
-export const BottomBar: React.FC = () => {
+export const BottomBar: React.FC<BottomBarProps> = props => {
   return (
     <div className="BottomBar">
-      <Display />
+      <Display activeTrack={props.activeTrack} />
       <Player />
       <VolumeControl />
     </div>
