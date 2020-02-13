@@ -22,6 +22,7 @@
 .display-container {
   margin-top: auto;
   margin-bottom: auto;
+  min-width: 200px;
 }
 h4 {
   color: $color-white;
@@ -46,14 +47,17 @@ h5 {
 // Player ------------------
 
 .Player {
+  margin: auto;
   margin-top: 15px;
   width: 40vw;
 }
 .player-controls {
-  margin-bottom: 8px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
 }
 .player-button {
-  margin: 0px 10px;
+  margin: auto 10px;
   color: $color-light-grey;
   font-size: 20px;
   cursor: pointer;
@@ -61,23 +65,30 @@ h5 {
     color: $color-white;
     transition: 0.1s;
   }
+  &:active {
+    transform: scale(0.93);
+  }
+}
+.btn-play,
+.btn-pause {
+  padding: 5px;
+  border: 1px solid $color-light-grey;
+  border-radius: 20px;
+  color: $color-white;
+  border-color: $color-white;
+  &:hover {
+    transform: scale(1.05);
+    transition: 0.1s;
+  }
 }
 .btn-play {
   padding: 5px 4px 5px 6px;
-  border: 1px solid $color-light-grey;
-  border-radius: 20px;
+}
 
-  color: $color-white;
-  border-color: $color-white;
-}
-.player-button.btn-play:hover {
-  transform: scale(1.1);
-  transition: 0.1s;
-}
 .progress {
   top: 10px;
   background-color: $color-grey;
-  position: relative;
+  position: rela;
   border-radius: 10px;
 }
 .progress-bar {

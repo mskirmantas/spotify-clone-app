@@ -1,10 +1,13 @@
 import React from "react";
 import "./TrackList.scss";
 
+import { Icon } from "antd";
+
 interface TrackListProps {
   onTrackClick: any;
   tracks: ITrack[];
   activeTrackID: any;
+  audio: any;
 }
 interface ITrack {
   artist: string;
@@ -19,13 +22,22 @@ interface TrackListItemProps {
   isActive: boolean;
   onClick: any;
   track: ITrack;
+  audio: any;
 }
 const TrackListItem: React.FC<TrackListItemProps> = props => {
   return (
     <div className="TrackListItem" key={props.track.id} onClick={props.onClick}>
+      <audio id="song" src={props.audio} />
+
       <div className="track-info">
         <div className="flex-container">
-          <div className="track-image" />
+          <div className="track-icon">
+            <Icon
+              className="track-icon-btn"
+              type="customer-service"
+              theme="filled"
+            />
+          </div>
           <div className="track-title">
             <h4>{props.track.title}</h4>
             <h5>
@@ -50,28 +62,11 @@ export const TrackList: React.FC<TrackListProps> = props => {
             key={track.id}
             track={track}
             isActive={track.id === props.activeTrackID}
-            onClick={() => props.onTrackClick(track.id)}
+            onClick={() => props.onTrackClick(track)}
+            audio={props.audio}
           />
         );
       })}
     </div>
   );
 };
-
-// const togglePlay = () => {
-//   setPlay(!play);
-// };
-// const audio = new Audio(
-//   "https://firebasestorage.googleapis.com/v0/b/spotify-player-react.appspot.com/o/audioFiles%2F03%20-%20Pools.mp3?alt=media&token=5e60f306-c9a1-43c6-b78c-ecc48140d142"
-// );
-
-// useEffect(() => {
-//   play ? audio.play() : audio.pause();
-// }, [play]);
-
-// useEffect(() => {
-//   audio.addEventListener("ended", () => setPlay(false));
-//   return () => {
-//     audio.removeEventListener("ended", () => setPlay(false));
-//   };
-// }, []);

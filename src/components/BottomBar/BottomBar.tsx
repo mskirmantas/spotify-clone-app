@@ -5,6 +5,15 @@ import { Icon } from "antd";
 
 interface BottomBarProps {
   activeTrack: ITrack | undefined;
+  isPlaying: boolean;
+  onPlayBtnClick: () => void;
+}
+interface DisplayProps {
+  activeTrack: ITrack | undefined;
+}
+interface PlayerProps {
+  isPlaying: boolean;
+  onPlayBtnClick: () => void;
 }
 interface ITrack {
   artist: string;
@@ -15,7 +24,7 @@ interface ITrack {
   url: string;
 }
 
-const Display: React.FC<BottomBarProps> = props => {
+const Display: React.FC<DisplayProps> = props => {
   return (
     <div className="display-container">
       {props.activeTrack ? (
@@ -31,21 +40,28 @@ const Display: React.FC<BottomBarProps> = props => {
   );
 };
 
-const Player: React.FC = () => {
+const Player: React.FC<PlayerProps> = props => {
   return (
     <div className="Player">
       <div className="player-controls">
         <Icon className="player-button" type="step-backward" theme="filled" />
-        <Icon
-          className="player-button btn-play"
-          type="caret-right"
-          theme="filled"
-        />
+        <div className="player-button" onClick={props.onPlayBtnClick}>
+          {props.isPlaying ? (
+            <Icon className="btn-pause" type="pause" />
+          ) : (
+            <Icon className=" btn-play" type="caret-right" theme="filled" />
+          )}
+        </div>
         <Icon className="player-button" type="step-forward" theme="filled" />
       </div>
       <div className="progress">
-        <div className="progress-bar" />
+        <div className="progress-bar">
+          <div></div>
+        </div>
       </div>
+      {/* <audio ref="player">
+        <source src="props.audioSrc"/>
+        </ audio> */}
     </div>
   );
 };
@@ -68,7 +84,10 @@ export const BottomBar: React.FC<BottomBarProps> = props => {
   return (
     <div className="BottomBar">
       <Display activeTrack={props.activeTrack} />
-      <Player />
+      <Player
+        isPlaying={props.isPlaying}
+        onPlayBtnClick={props.onPlayBtnClick}
+      />
       <VolumeControl />
     </div>
   );

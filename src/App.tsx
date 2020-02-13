@@ -28,6 +28,9 @@ const App: React.FC = () => {
   const [activeTrackID, setActiveTrackID] = useState<string | undefined>(
     undefined
   );
+  const [aT, setAT] = useState<ITrack | undefined>(undefined);
+  const [audio, setAudio] = useState<any>();
+  const [playing, setPlaying] = useState<boolean>(false);
 
   useEffect(() => {
     Database.collection("files")
@@ -43,9 +46,44 @@ const App: React.FC = () => {
       .catch(error => console.log(error));
   }, []);
 
-  const handleSetActiveTrack = (trackID: string | undefined) => {
-    setActiveTrackID(trackID);
+  const audioTest: any = document.getElementById("song");
+
+  const togglePlayPause = () => {
+    setPlaying(!playing);
+    // playing ? song.play() : song.pause();
   };
+
+  function getActiveTrack(): ITrack | undefined {
+    if (activeTrackID) {
+      return tracks.find(t => t.id === activeTrackID);
+    }
+  }
+  const activeTrack = getActiveTrack();
+
+  // const handleSetActiveTrack = (trackID: string) => {
+  //   setActiveTrackID(trackID);
+  //   setPlaying(true);
+  //   if (activeTrackID === trackID && playing === true) {
+  //     setPlaying(false);
+  //   }
+  //   if (activeTrack) {
+  //     setAudio(activeTrack.url);
+  //   }
+  // };
+
+  const handleSetActiveTrack = (track: ITrack) => {
+    setAT(track);
+    setActiveTrackID(track.id);
+    setPlaying(true);
+    if (activeTrackID === track.id && playing === true) {
+      setPlaying(false);
+    }
+    setAudio(track.url);
+  };
+  // console.log(audio);
+  useEffect(() => {
+    if (audioTest) playing ? audioTest.play() : audioTest.pause();
+  });
 
   return (
     <BrowserRouter>
@@ -61,10 +99,15 @@ const App: React.FC = () => {
                 tracks={tracks}
                 activeTrackID={activeTrackID}
                 onTrackClick={handleSetActiveTrack}
+                audio={audio}
               />
             </Content>
           </Layout>
-          <BottomBar activeTrack={tracks.find(t => t.id === activeTrackID)} />
+          <BottomBar
+            activeTrack={aT}
+            isPlaying={playing}
+            onPlayBtnClick={togglePlayPause}
+          />
         </Layout>
       </div>
     </BrowserRouter>
@@ -72,3 +115,21 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+// const togglePlay = () => {
+//   setPlay(!play);
+// };
+// const audio = new Audio(
+//   "https://firebasestorage.googleapis.com/v0/b/spotify-player-react.appspot.com/o/audioFiles%2F03%20-%20Pools.mp3?alt=media&token=5e60f306-c9a1-43c6-b78c-ecc48140d142"
+// );
+
+// useEffect(() => {
+//   playing ? audio.play() : audio.pause();
+// }, [playing, audio]);
+
+// useEffect(() => {
+//   audio.addEventListener("ended", () => setPlay(false));
+//   return () => {
+//     audio.removeEventListener("ended", () => setPlay(false));
+//   };
+// }, []);
