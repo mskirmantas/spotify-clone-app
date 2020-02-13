@@ -15,6 +15,7 @@ interface Props {
   activeTrackID: any;
   onTrackClick: any;
   audio: any;
+  isPlaying: boolean;
 }
 
 interface ITrack {
@@ -38,6 +39,7 @@ export const ContentPage: React.FC<Props> = props => {
               activeTrackID={props.activeTrackID}
               onTrackClick={props.onTrackClick}
               audio={props.audio}
+              isPlaying={props.isPlaying}
             />
           )}
         />

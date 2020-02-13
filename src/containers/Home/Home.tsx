@@ -8,6 +8,7 @@ interface HomeProps {
   tracks: ITrack[];
   activeTrackID: any;
   audio: any;
+  isPlaying: boolean;
 }
 interface ITrack {
   artist: string;
@@ -28,6 +29,7 @@ export const Home: React.FC<HomeProps> = props => {
           activeTrackID={props.activeTrackID}
           onTrackClick={props.onTrackClick}
           audio={props.audio}
+          isPlaying={props.isPlaying}
         />
       </div>
     </div>

@@ -59,9 +59,6 @@ const Player: React.FC<PlayerProps> = props => {
           <div></div>
         </div>
       </div>
-      {/* <audio ref="player">
-        <source src="props.audioSrc"/>
-        </ audio> */}
     </div>
   );
 };

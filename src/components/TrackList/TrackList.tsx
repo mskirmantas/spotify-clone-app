@@ -8,6 +8,7 @@ interface TrackListProps {
   tracks: ITrack[];
   activeTrackID: any;
   audio: any;
+  isPlaying: boolean;
 }
 interface ITrack {
   artist: string;
@@ -23,20 +24,25 @@ interface TrackListItemProps {
   onClick: any;
   track: ITrack;
   audio: any;
+  isPlaying: boolean;
 }
 const TrackListItem: React.FC<TrackListItemProps> = props => {
   return (
     <div className="TrackListItem" key={props.track.id} onClick={props.onClick}>
-      <audio id="song" src={props.audio} />
+      <audio id="current-track" src={props.audio} />
 
       <div className="track-info">
         <div className="flex-container">
           <div className="track-icon">
-            <Icon
-              className="track-icon-btn"
-              type="customer-service"
-              theme="filled"
-            />
+            {props.isPlaying && props.isActive ? (
+              <Icon className="track-icon-btn active-icon" type="pause" />
+            ) : (
+              <Icon
+                className="track-icon-btn"
+                type="customer-service"
+                theme="filled"
+              />
+            )}
           </div>
           <div className="track-title">
             <h4>{props.track.title}</h4>
@@ -64,6 +70,7 @@ export const TrackList: React.FC<TrackListProps> = props => {
             isActive={track.id === props.activeTrackID}
             onClick={() => props.onTrackClick(track)}
             audio={props.audio}
+            isPlaying={props.isPlaying}
           />
         );
       })}
