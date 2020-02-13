@@ -22,9 +22,9 @@
 .track-icon-btn {
   font-size: 20px;
   color: $color-grey;
-
   &:hover {
-    transform: scale(1.05);
+    color: $color-light-grey;
+    transform: scale(1.02);
     transition: 0.1s;
   }
 }

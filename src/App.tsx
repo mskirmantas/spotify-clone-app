@@ -29,7 +29,6 @@ const App: React.FC = () => {
   const [activeTrackID, setActiveTrackID] = useState<string | undefined>(
     undefined
   );
-
   const [audioSrc, setAudioSrc] = useState<string>("");
   const [playingStatus, setPlayingStatus] = useState<boolean>(false);
 

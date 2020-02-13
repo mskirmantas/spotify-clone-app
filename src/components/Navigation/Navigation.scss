@@ -14,14 +14,14 @@
     font-weight: bold;
     margin: 0;
   }
-  &:focus {
-    color: $color-white;
-    background-color: $color-dark-grey;
-    border-radius: 5px;
-  }
   &:hover {
     color: $color-white;
   }
+}
+.tab.active {
+  color: $color-white;
+  background-color: $color-dark-grey;
+  border-radius: 5px;
 }
 .navlink-icon {
   font-size: 20px;
