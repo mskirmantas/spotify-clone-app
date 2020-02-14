@@ -73,7 +73,20 @@ const App: React.FC = () => {
     setPlayHistory([...playHistory, track]);
   };
   const handlePlayPrev = () => {
-    setActiveTrack(playHistory.pop());
+    if (playHistory.length > 1) {
+      setActiveTrack(playHistory.pop());
+    }
+  };
+
+  const handlePlayNext = () => {
+    let nextTrack: ITrack;
+    do {
+      nextTrack = tracks[Math.floor(Math.random() * tracks.length)];
+    } while (
+      playHistory.length > 0 &&
+      playHistory[playHistory.length - 1] === nextTrack
+    );
+    handleSetActiveTrack(nextTrack);
   };
 
   return (
@@ -100,6 +113,7 @@ const App: React.FC = () => {
             isPlaying={playingStatus}
             onPlayBtnClick={togglePlayPause}
             onPrevBtnClick={handlePlayPrev}
+            onNextBtnClick={handlePlayNext}
           />
         </Layout>
       </div>
