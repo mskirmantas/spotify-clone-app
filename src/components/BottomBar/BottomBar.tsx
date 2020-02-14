@@ -7,6 +7,7 @@ interface BottomBarProps {
   activeTrack: ITrack | undefined;
   isPlaying: boolean;
   onPlayBtnClick: () => void;
+  onPrevBtnClick: () => void;
 }
 interface DisplayProps {
   activeTrack: ITrack | undefined;
@@ -14,6 +15,7 @@ interface DisplayProps {
 interface PlayerProps {
   isPlaying: boolean;
   onPlayBtnClick: () => void;
+  onPrevBtnClick: () => void;
 }
 interface ITrack {
   artist: string;
@@ -44,7 +46,12 @@ const Player: React.FC<PlayerProps> = props => {
   return (
     <div className="Player">
       <div className="player-controls">
-        <Icon className="player-button" type="step-backward" theme="filled" />
+        <Icon
+          className="player-button"
+          type="step-backward"
+          theme="filled"
+          onClick={props.onPrevBtnClick}
+        />
         <div className="player-button" onClick={props.onPlayBtnClick}>
           {props.isPlaying ? (
             <Icon className="btn-pause" type="pause" />
@@ -84,6 +91,7 @@ export const BottomBar: React.FC<BottomBarProps> = props => {
       <Player
         isPlaying={props.isPlaying}
         onPlayBtnClick={props.onPlayBtnClick}
+        onPrevBtnClick={props.onPrevBtnClick}
       />
       <VolumeControl />
     </div>

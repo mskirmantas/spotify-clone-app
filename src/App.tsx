@@ -32,6 +32,8 @@ const App: React.FC = () => {
   const [audioSrc, setAudioSrc] = useState<string>("");
   const [playingStatus, setPlayingStatus] = useState<boolean>(false);
 
+  const [playHistory, setPlayHistory] = useState<ITrack[]>([]);
+
   // Get Files from DB:
   useEffect(() => {
     Database.collection("files")
@@ -50,10 +52,10 @@ const App: React.FC = () => {
   // Get Audio source:
   const audio: any = document.getElementById("current-track");
 
-  // Play Audio:
+  // Play Audio:  <----------- pakeist i paprastas funkcijas
   useEffect(() => {
     if (audio) playingStatus ? audio.play() : audio.pause();
-  });
+  }, [audio, playingStatus]);
 
   const togglePlayPause = () => {
     setPlayingStatus(!playingStatus);
@@ -68,6 +70,10 @@ const App: React.FC = () => {
     if (activeTrackID === track.id && playingStatus === true) {
       setPlayingStatus(false);
     }
+    setPlayHistory([...playHistory, track]);
+  };
+  const handlePlayPrev = () => {
+    setActiveTrack(playHistory.pop());
   };
 
   return (
@@ -93,6 +99,7 @@ const App: React.FC = () => {
             activeTrack={activeTrack}
             isPlaying={playingStatus}
             onPlayBtnClick={togglePlayPause}
+            onPrevBtnClick={handlePlayPrev}
           />
         </Layout>
       </div>

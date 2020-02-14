@@ -29,7 +29,11 @@ interface TrackListItemProps {
 const TrackListItem: React.FC<TrackListItemProps> = props => {
   return (
     <div className="TrackListItem" key={props.track.id} onClick={props.onClick}>
-      <audio id="current-track" src={props.audio} />
+      <audio
+        id="current-track"
+        // src={props.audio}
+        src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/Ziklibrenbib/Mela/Mela_two/Mela_-_02_-_Free_Time.mp3"
+      />
 
       <div className="track-info">
         <div className="flex-container">
