@@ -7,7 +7,7 @@ interface TrackListProps {
   onTrackClick: any;
   tracks: ITrack[];
   activeTrackID: any;
-  audio: any;
+  // audio: any;
   isPlaying: boolean;
 }
 interface ITrack {
@@ -23,23 +23,22 @@ interface TrackListItemProps {
   isActive: boolean;
   onClick: any;
   track: ITrack;
-  audio: any;
+  // audio: string;
   isPlaying: boolean;
 }
 const TrackListItem: React.FC<TrackListItemProps> = props => {
+  // console.log(props.track.url);
   return (
-    <div className="TrackListItem" key={props.track.id} onClick={props.onClick}>
-      <audio
-        id="current-track"
-        // src={props.audio}
-        src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/Ziklibrenbib/Mela/Mela_two/Mela_-_02_-_Free_Time.mp3"
-      />
-
+    <div className="TrackListItem" onClick={props.onClick}>
       <div className="track-info">
+        {props.isPlaying && props.isActive ? (
+          <audio id={props.track.id} src={props.track.url} autoPlay />
+        ) : null}
+
         <div className="flex-container">
           <div className="track-icon">
             {props.isPlaying && props.isActive ? (
-              <Icon className="track-icon-btn active-icon" type="pause" />
+              <Icon className="track-icon-btn active-icon" type="pause"></Icon>
             ) : (
               <Icon
                 className="track-icon-btn"
@@ -71,9 +70,8 @@ export const TrackList: React.FC<TrackListProps> = props => {
           <TrackListItem
             key={track.id}
             track={track}
+            onClick={() => props.onTrackClick(track.id)}
             isActive={track.id === props.activeTrackID}
-            onClick={() => props.onTrackClick(track)}
-            audio={props.audio}
             isPlaying={props.isPlaying}
           />
         );
