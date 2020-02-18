@@ -52,7 +52,7 @@ h5 {
   width: 40vw;
 }
 .player-controls {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: center;
 }
@@ -84,18 +84,26 @@ h5 {
 .btn-play {
   padding: 5px 4px 5px 6px;
 }
-
-.progress {
-  top: 10px;
-  background-color: $color-grey;
-  position: rela;
-  border-radius: 10px;
+.timeline {
+  display: flex;
 }
-.progress-bar {
-  height: 4px;
-  background-color: $color-theme;
-  width: 53%;
+.progress {
+  margin: auto 20px;
+  top: 10px;
   border-radius: 10px;
+  height: 4px;
+  cursor: pointer;
+  background-color: $color-grey;
+  width: 40vw;
+}
+.bar {
+  height: inherit;
+  border-radius: inherit;
+  background-color: $color-theme;
+  max-width: 100%;
+}
+.time {
+  color: $color-light-grey;
 }
 
 // Volume ------------------
