@@ -1,6 +1,7 @@
 import React from "react";
 import "./TopBar.scss";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpotify } from "@fortawesome/free-brands-svg-icons";
 import { NavLink } from "react-router-dom";
 import { Layout, Icon, Button } from "antd";
 const { Sider, Content } = Layout;
@@ -10,7 +11,7 @@ export const TopBar: React.FC = () => {
     <Layout>
       <Sider>
         <NavLink className="logo" to="/">
-          <Icon type="play-circle" theme="filled" className="logoIcon" />
+          <FontAwesomeIcon icon={faSpotify} className="logoIcon" spin />
           <p>Spotify</p>
         </NavLink>
       </Sider>
