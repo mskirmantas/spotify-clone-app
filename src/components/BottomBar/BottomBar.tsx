@@ -108,7 +108,8 @@ export default class Player extends React.Component<PlayerProps> {
 
     return (
       <div className="Player">
-        {this.props.isPlaying && this.props.activeTrack ? (
+        {// this.props.isPlaying &&
+        this.props.activeTrack ? (
           <audio src={this.props.activeTrack.url} autoPlay />
         ) : null}
         <div className="player-controls">
@@ -166,7 +167,7 @@ function formatToNumber(num: number) {
 
 function formatTime(s: number) {
   if (!s && s !== 0) {
-    return "??:??";
+    return "00:00";
   }
 
   const total_seconds = Math.floor(s);

@@ -78,10 +78,14 @@ export default class App extends React.Component<Props, IState> {
     if (this.state.activeTrackID === undefined) {
       this.setState({ activeTrackID: this.state.tracks[0].id });
     }
+    let audio = document.querySelector("audio");
+    if (audio) {
+      this.state.playingStatus ? audio.pause() : audio.play();
+    }
   };
 
   handlePlayPrev = () => {
-    if (this.state.playHistory.length > 1) {
+    if (this.state.playHistory.length > 0) {
       this.setState({ activeTrackID: this.state.playHistory.pop() });
     }
   };
