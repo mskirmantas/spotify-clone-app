@@ -53,7 +53,12 @@ export default class App extends React.Component<Props, IState> {
           const data = doc.data();
           musicFiles.push(data);
         });
-        this.setState({ tracks: musicFiles });
+        this.setState({
+          tracks: musicFiles,
+          activeTrackID:
+            musicFiles[Math.floor(Math.random() * musicFiles.length)].id,
+          playingStatus: false
+        });
       })
       .catch(error => console.log(error));
   }
@@ -87,8 +92,28 @@ export default class App extends React.Component<Props, IState> {
   handlePlayPrev = () => {
     if (this.state.playHistory.length > 0) {
       this.setState({ activeTrackID: this.state.playHistory.pop() });
+      this.setState({ playingStatus: true });
     }
   };
+
+  // handlePlayNext = () => {
+  //   if (this.state.activeTrackID) {
+  //     this.setState({
+  //       playHistory: [...this.state.playHistory, this.state.activeTrackID]
+  //     });
+  //   }
+  //   let nextTrack: string;
+  //   do {
+  //     nextTrack = this.state.tracks[
+  //       Math.floor(Math.random() * this.state.tracks.length)
+  //     ].id;
+  //   } while (
+  //     this.state.playHistory.length > 0 &&
+  //     this.state.playHistory[this.state.playHistory.length - 1] === nextTrack
+  //   );
+  //   this.setState({ activeTrackID: nextTrack });
+  //   this.setState({ playingStatus: true });
+  // };
 
   handlePlayNext = () => {
     if (this.state.activeTrackID) {
@@ -96,15 +121,13 @@ export default class App extends React.Component<Props, IState> {
         playHistory: [...this.state.playHistory, this.state.activeTrackID]
       });
     }
-    let nextTrack: string;
-    do {
-      nextTrack = this.state.tracks[
-        Math.floor(Math.random() * this.state.tracks.length)
-      ].id;
-    } while (
-      this.state.playHistory.length > 0 &&
-      this.state.playHistory[this.state.playHistory.length - 1] === nextTrack
+    const currentTrackIndex = this.state.tracks.findIndex(
+      track => track.id === this.state.activeTrackID
     );
+    const totalTracks = this.state.tracks.length - 1;
+    const nextTrackIndex =
+      currentTrackIndex === totalTracks ? 0 : currentTrackIndex + 1;
+    const nextTrack = this.state.tracks[nextTrackIndex].id;
     this.setState({ activeTrackID: nextTrack });
     this.setState({ playingStatus: true });
   };

@@ -10,7 +10,7 @@ export const TopBar: React.FC = () => {
   return (
     <Layout>
       <Sider>
-        <NavLink className="logo" to="/">
+        <NavLink className="logo" to="/home">
           <FontAwesomeIcon icon={faSpotify} className="logoIcon" spin />
           <p>Spotify</p>
         </NavLink>

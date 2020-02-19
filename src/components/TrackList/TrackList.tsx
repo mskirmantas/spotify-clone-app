@@ -27,14 +27,9 @@ interface TrackListItemProps {
   isPlaying: boolean;
 }
 const TrackListItem: React.FC<TrackListItemProps> = props => {
-  // console.log(props.track.url);
   return (
     <div className="TrackListItem" id={props.track.id} onClick={props.onClick}>
       <div className="track-info">
-        {/* {props.isPlaying && props.isActive ? (
-          <audio ref="audio-ref" id="audio" src={props.track.url} autoPlay />
-        ) : null} */}
-
         <div className="flex-container">
           <div className="track-icon">
             {props.isPlaying && props.isActive ? (

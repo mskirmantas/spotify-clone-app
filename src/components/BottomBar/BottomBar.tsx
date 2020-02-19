@@ -112,8 +112,7 @@ export default class Player extends React.Component<PlayerProps> {
 
     return (
       <div className="Player">
-        {// this.props.isPlaying &&
-        this.props.activeTrack ? (
+        {this.props.activeTrack ? (
           <audio src={this.props.activeTrack.url} autoPlay />
         ) : null}
         <div className="player-controls">
@@ -138,7 +137,9 @@ export default class Player extends React.Component<PlayerProps> {
           />
         </div>
         <div className="timeline">
-          <div className="time">{formatTime(currentTime)}</div>
+          <div className="time">
+            <h5>{formatTime(currentTime)}</h5>
+          </div>
           <div
             id="progress_bar"
             className="progress"
@@ -151,7 +152,9 @@ export default class Player extends React.Component<PlayerProps> {
               style={{ width: this.state.progress * 100 + "%" }}
             />
           </div>
-          <div className="time">{formatTime(totalTime)}</div>
+          <div className="time">
+            <h5>{formatTime(totalTime)}</h5>
+          </div>
         </div>
       </div>
     );
