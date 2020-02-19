@@ -5,6 +5,7 @@ import { Database } from "./config/firebase";
 // Components
 import { TopBar } from "./components/TopBar";
 import { Navigation } from "./components/Navigation";
+import { ArtworkDisplay } from "./components/ArtworkDisplay";
 import { Home } from "./containers/Home";
 import { Search } from "./containers/Search";
 import { Collection } from "./containers/Collection";
@@ -32,6 +33,7 @@ interface ITrack {
   time: string;
   title: string;
   url: string;
+  cover: string;
 }
 
 export default class App extends React.Component<Props, IState> {
@@ -110,6 +112,14 @@ export default class App extends React.Component<Props, IState> {
     this.setState({ playingStatus: true });
   };
 
+  // getActiveTrack = () => {
+  //   return this.state.tracks.find(
+  //     track => track.id === this.state.activeTrackID
+  //   );
+  // };
+
+  // activeTrack = this.getActiveTrack();
+
   render() {
     return (
       <BrowserRouter>
@@ -119,6 +129,11 @@ export default class App extends React.Component<Props, IState> {
             <Layout>
               <Sider>
                 <Navigation />
+                <ArtworkDisplay
+                  activeTrack={this.state.tracks.find(
+                    track => track.id === this.state.activeTrackID
+                  )}
+                />
               </Sider>
               <Content>
                 <Switch>

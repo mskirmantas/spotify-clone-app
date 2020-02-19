@@ -27,6 +27,7 @@ interface ITrack {
   time: string;
   title: string;
   url: string;
+  cover: string;
 }
 
 const Display: React.FC<DisplayProps> = props => {
