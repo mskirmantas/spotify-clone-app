@@ -113,7 +113,10 @@ export default class Player extends React.Component<PlayerProps> {
     return (
       <div className="Player">
         {this.props.activeTrack ? (
-          <audio src={this.props.activeTrack.url} autoPlay />
+          <audio
+            src={this.props.activeTrack.url}
+            autoPlay={this.props.isPlaying}
+          />
         ) : null}
         <div className="player-controls">
           <Icon

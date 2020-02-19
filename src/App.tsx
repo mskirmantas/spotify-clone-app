@@ -68,11 +68,8 @@ export default class App extends React.Component<Props, IState> {
   handleSetActiveTrack = (trackID: string) => {
     this.setState({ activeTrackID: trackID });
     this.setState({ playingStatus: true });
-    if (
-      this.state.activeTrackID === trackID &&
-      this.state.playingStatus === true
-    ) {
-      this.setState({ playingStatus: false });
+    if (this.state.activeTrackID === trackID) {
+      this.togglePlayPause();
     }
   };
 
@@ -95,25 +92,6 @@ export default class App extends React.Component<Props, IState> {
       this.setState({ playingStatus: true });
     }
   };
-
-  // handlePlayNext = () => {
-  //   if (this.state.activeTrackID) {
-  //     this.setState({
-  //       playHistory: [...this.state.playHistory, this.state.activeTrackID]
-  //     });
-  //   }
-  //   let nextTrack: string;
-  //   do {
-  //     nextTrack = this.state.tracks[
-  //       Math.floor(Math.random() * this.state.tracks.length)
-  //     ].id;
-  //   } while (
-  //     this.state.playHistory.length > 0 &&
-  //     this.state.playHistory[this.state.playHistory.length - 1] === nextTrack
-  //   );
-  //   this.setState({ activeTrackID: nextTrack });
-  //   this.setState({ playingStatus: true });
-  // };
 
   handlePlayNext = () => {
     if (this.state.activeTrackID) {
