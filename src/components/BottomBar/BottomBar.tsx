@@ -108,7 +108,7 @@ export default class Player extends React.Component<PlayerProps> {
         audio.currentTime = audio.duration * this.state.progress;
       }
       currentTime = audio.currentTime;
-      totalTime = audio.duration;
+      totalTime = audio.duration - currentTime;
     }
 
     return (
