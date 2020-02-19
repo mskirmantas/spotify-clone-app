@@ -2,24 +2,20 @@
 
 // TrackListItem.scss ----------------------------------------
 
-.flex-container {
-  display: flex;
-}
 .TrackListItem {
   display: flex;
   flex-direction: column;
   margin: 20px 0px;
   cursor: pointer;
 }
-.track-icon {
+.flex-container {
+  display: flex;
+}
+
+.track-icon-btn {
+  padding-top: 10px;
   width: 40px;
   height: 40px;
-  // background-color: $color-grey;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.track-icon-btn {
   font-size: 20px;
   color: $color-grey;
   &:hover {
@@ -36,6 +32,7 @@
   padding: 0px 20px;
 }
 .track-info {
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }

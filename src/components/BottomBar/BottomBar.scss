@@ -13,30 +13,33 @@
 }
 // Display ------------------
 .Display {
-  display: flex;
-  justify-content: space-between;
-  padding: 0px 20px;
-  width: 200px;
-  min-width: 200px;
-}
-.display-container {
   margin-top: auto;
   margin-bottom: auto;
+  width: 30vw;
   min-width: 200px;
 }
+
+.now-playing {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 20px;
+  text-align: left;
+}
+.playing-track-title {
+  display: flex;
+  padding-bottom: 5px;
+}
+
 h4 {
   color: $color-white;
 }
 h5 {
+  font-weight: 400;
   color: $color-light-grey;
 }
-.now-playing {
-  margin-top: auto;
-  margin-bottom: auto;
-  text-align: left;
-}
+
 .btn-like {
-  margin: auto 0;
+  margin: auto 20px;
   color: $color-light-grey;
   font-size: 17px;
   &:hover {
@@ -47,7 +50,6 @@ h5 {
 // Player ------------------
 
 .Player {
-  margin: auto;
   margin-top: 15px;
   width: 40vw;
 }
@@ -108,7 +110,7 @@ h5 {
 
 // Volume ------------------
 .VolumeControl {
-  width: 200px;
+  width: 30vw;
   min-width: 200px;
   margin-top: auto;
   margin-bottom: auto;

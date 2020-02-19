@@ -32,14 +32,14 @@ interface ITrack {
 
 const Display: React.FC<DisplayProps> = props => {
   return (
-    <div className="display-container">
+    <div className="Display">
       {props.activeTrack ? (
-        <div className="Display">
-          <div className="now-playing">
+        <div className="now-playing ">
+          <div className="playing-track-title">
             <h4>{props.activeTrack.title}</h4>
-            <h5>{props.activeTrack.artist}</h5>
+            <Icon className="btn-like" type="heart" />
           </div>
-          <Icon className="btn-like" type="heart" />
+          <h5>{props.activeTrack.artist}</h5>
         </div>
       ) : null}
     </div>
