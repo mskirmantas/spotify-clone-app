@@ -6,18 +6,18 @@ import { Icon } from "antd";
 interface BottomBarProps {
   activeTrack: ITrack | undefined;
   isPlaying: boolean;
-  onPlayBtnClick: () => void;
-  onPrevBtnClick: () => void;
-  onNextBtnClick: () => void;
+  onPlayPause: () => void;
+  onPlayPrev: () => void;
+  onPlayNext: () => void;
 }
 interface DisplayProps {
   activeTrack: ITrack | undefined;
 }
 interface PlayerProps {
   isPlaying: boolean;
-  onPlayBtnClick: () => void;
-  onPrevBtnClick: () => void;
-  onNextBtnClick: () => void;
+  onPlayPause: () => void;
+  onPlayPrev: () => void;
+  onPlayNext: () => void;
   activeTrack: ITrack | undefined;
 }
 interface ITrack {
@@ -61,6 +61,13 @@ export default class Player extends React.Component<PlayerProps> {
         progress: audio.currentTime / audio.duration
       });
     }
+    this.handleTrackEnded();
+  }
+
+  handleTrackEnded() {
+    if (this.state.progress === 1) {
+      this.props.onPlayNext();
+    }
   }
 
   startSetProgress(evt: any) {
@@ -90,9 +97,6 @@ export default class Player extends React.Component<PlayerProps> {
   }
 
   render() {
-    // if (this.refs.audioRef) {
-    // let audio = this.refs.audioRef;
-
     let currentTime = 0;
     let totalTime = 0;
 
@@ -117,20 +121,20 @@ export default class Player extends React.Component<PlayerProps> {
             className="player-button"
             type="step-backward"
             theme="filled"
-            onClick={this.props.onPrevBtnClick}
+            onClick={this.props.onPlayPrev}
           />
-          <div className="player-button" onClick={this.props.onPlayBtnClick}>
+          <div className="player-button" onClick={this.props.onPlayPause}>
             {this.props.isPlaying ? (
               <Icon className="btn-pause" type="pause" />
             ) : (
-              <Icon className=" btn-play" type="caret-right" theme="filled" />
+              <Icon className="btn-play" type="caret-right" theme="filled" />
             )}
           </div>
           <Icon
             className="player-button"
             type="step-forward"
             theme="filled"
-            onClick={this.props.onNextBtnClick}
+            onClick={this.props.onPlayNext}
           />
         </div>
         <div className="timeline">
@@ -214,9 +218,9 @@ export const BottomBar: React.FC<BottomBarProps> = props => {
       <Player
         isPlaying={props.isPlaying}
         activeTrack={props.activeTrack}
-        onPlayBtnClick={props.onPlayBtnClick}
-        onPrevBtnClick={props.onPrevBtnClick}
-        onNextBtnClick={props.onNextBtnClick}
+        onPlayPause={props.onPlayPause}
+        onPlayPrev={props.onPlayPrev}
+        onPlayNext={props.onPlayNext}
       />
       <VolumeControl />
     </div>

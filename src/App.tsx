@@ -143,9 +143,9 @@ export default class App extends React.Component<Props, IState> {
                 track => track.id === this.state.activeTrackID
               )}
               isPlaying={this.state.playingStatus}
-              onPlayBtnClick={this.togglePlayPause}
-              onPrevBtnClick={this.handlePlayPrev}
-              onNextBtnClick={this.handlePlayNext}
+              onPlayPause={this.togglePlayPause}
+              onPlayPrev={this.handlePlayPrev}
+              onPlayNext={this.handlePlayNext}
             />
           </Layout>
         </div>
