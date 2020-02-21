@@ -51,6 +51,7 @@ export const FileUpload: React.FC = () => {
                 artist: "",
                 album: "",
                 time: "",
+                cover: "",
                 url: song.url,
                 title: song.name
               })

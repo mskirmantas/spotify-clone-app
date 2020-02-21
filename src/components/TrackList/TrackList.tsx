@@ -26,12 +26,16 @@ interface TrackListItemProps {
 
   isPlaying: boolean;
 }
+
 const TrackListItem: React.FC<TrackListItemProps> = props => {
   return (
     <div className="TrackListItem" id={props.track.id} onClick={props.onClick}>
       <div className="flex-container">
-        {props.isPlaying && props.isActive ? (
-          <Icon className="track-icon-btn active-icon" type="pause"></Icon>
+        {props.isActive ? (
+          <Icon
+            className="track-icon-btn active-icon"
+            type={props.isPlaying ? "pause" : "caret-right"}
+          ></Icon>
         ) : (
           <Icon
             className="track-icon-btn"

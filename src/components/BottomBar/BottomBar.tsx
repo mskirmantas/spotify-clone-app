@@ -99,7 +99,7 @@ export default class Player extends React.Component<PlayerProps> {
 
   render() {
     let currentTime = 0;
-    let totalTime = 0;
+    let timeCountdown = 0;
 
     let audio = document.querySelector("audio");
     if (audio) {
@@ -108,7 +108,7 @@ export default class Player extends React.Component<PlayerProps> {
         audio.currentTime = audio.duration * this.state.progress;
       }
       currentTime = audio.currentTime;
-      totalTime = audio.duration - currentTime;
+      timeCountdown = audio.duration - currentTime;
     }
 
     return (
@@ -144,11 +144,12 @@ export default class Player extends React.Component<PlayerProps> {
           <div className="time">
             <h5>{formatTime(currentTime)}</h5>
           </div>
+
           <div
             id="progress_bar"
             className="progress"
             onMouseDown={this.startSetProgress.bind(this)}
-            onMouseMove={this.setProgress.bind(this)}
+            // onMouseMove={this.setProgress.bind(this)}
             onMouseUp={this.stopSetProgress.bind(this)}
           >
             <div
@@ -156,8 +157,9 @@ export default class Player extends React.Component<PlayerProps> {
               style={{ width: this.state.progress * 100 + "%" }}
             />
           </div>
+
           <div className="time">
-            <h5>{formatTime(totalTime)}</h5>
+            <h5>{formatTime(timeCountdown)}</h5>
           </div>
         </div>
       </div>
@@ -205,15 +207,35 @@ function formatTime(s: number) {
 // }
 
 const VolumeControl: React.FC = () => {
+  const [volume, setVolume] = React.useState<number>(0.75);
+
+  const changeVolume = (evt: any) => {
+    let volumeBar = document.getElementById("volume");
+    if (volumeBar !== null) {
+      let volumeLevel =
+        (evt.clientX - offsetLeft(evt.target)) / volumeBar.clientWidth;
+      setVolume(volumeLevel);
+    }
+  };
+
+  const offsetLeft = (el: any) => {
+    let left = 0;
+    while (el) {
+      left += el.offsetLeft;
+      el = el.offsetParent;
+    }
+    return left;
+  };
+
   return (
     <div className="VolumeControl">
-      {/* <div className="icon">
+      <div className="icon">
         <Icon className="vol-icon" type="filter" rotate={90} />
         <Icon className="vol-icon" type="wifi" rotate={90} />
       </div>
-      <div className="volume">
-        <div className="volume-bar" />
-      </div> */}
+      <div id="volume" className="volume" onClick={changeVolume}>
+        <div className="volume-bar" style={{ width: volume * 100 + "%" }} />
+      </div>
     </div>
   );
 };

@@ -48,22 +48,32 @@ export default class App extends React.Component<Props, IState> {
 
   componentDidMount() {
     Database.collection("files")
+      .orderBy("artist", "asc")
       .get()
       .then(snapshot => {
-        const musicFiles: any = [];
+        const newFiles: any = [];
         snapshot.forEach(doc => {
           const data = doc.data();
-          musicFiles.push(data);
+          newFiles.push(data);
         });
         this.setState({
-          tracks: musicFiles,
-          activeTrackID:
-            musicFiles[Math.floor(Math.random() * musicFiles.length)].id,
-          playingStatus: false
+          tracks: newFiles
         });
       })
       .catch(error => console.log(error));
   }
+
+  // subscribeToAllTracks(callbackFunction) {
+  //   return Database.collection("files")
+  //     .orderBy("artist", "desc")
+  //     .onSnapshot(snapshot => {
+  //       const newFiles: any = [];
+  //       snapshot.forEach(doc => {
+  //         const data = doc.data();
+  //         newFiles.push(data);
+  //       });
+  //     });
+  // }
 
   // On Track click: ---------------------------------------------------
 
