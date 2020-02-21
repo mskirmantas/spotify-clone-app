@@ -2,7 +2,7 @@
 
 A Spotify player clone app created using **React** + **Typescript**  + **Ant Design** + **Firebase**
 
-**Note: The app development is still in progress.
+**Note: The app development is still in progress**
 
 ![](src/images/react-spotify-1.PNG)
 
