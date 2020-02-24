@@ -1,0 +1,41 @@
+@import "../../theme.scss";
+
+.VolumeControl {
+  width: 30vw;
+  min-width: 200px;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 0px 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+.icon {
+  padding-right: 10px;
+}
+.vol-icon {
+  color: $color-light-grey;
+  font-size: 12px;
+}
+
+.volume {
+  width: 80px;
+  height: 5px;
+  top: 10px;
+  background-color: $color-grey;
+  position: relative;
+  border-radius: 10px;
+  cursor: pointer;
+  &:hover {
+    .volume-bar {
+      background-color: $color-theme;
+    }
+    transition: 0.2s;
+  }
+}
+.volume-bar {
+  height: inherit;
+  background-color: $color-light-grey;
+
+  border-radius: inherit;
+  max-width: 100%;
+}

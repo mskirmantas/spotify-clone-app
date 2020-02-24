@@ -1,7 +1,5 @@
 @import "../../theme.scss";
 
-// TrackListItem.scss ----------------------------------------
-
 .TrackListItem {
   display: flex;
   flex-direction: column;
@@ -39,6 +37,9 @@
 
 .track-time {
   margin: auto 0px;
+  h5 {
+    font-weight: 500;
+  }
 }
 
 .TrackListItem::after {

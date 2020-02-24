@@ -10,3 +10,39 @@
     font-size: 50px;
   }
 }
+
+.search-field {
+  width: 350px;
+  background-color: $color-white;
+  border-radius: 30px;
+  .search-icon {
+    color: $color-black-ish;
+    font-size: 20px;
+    margin-left: 15px;
+  }
+  input {
+    color: $color-black-ish;
+    width: 260px;
+    -webkit-appearance: none !important;
+    box-shadow: none;
+    border: none;
+    outline: none;
+    padding: 10px 15px;
+    background-color: inherit;
+  }
+  .clear-icon {
+    color: $color-light-grey;
+    font-size: 18px;
+    float: right;
+    padding: 11px 15px;
+    padding-left: 0px;
+    cursor: pointer;
+    &:hover {
+      color: $color-grey;
+      transition: 0.3s;
+    }
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}

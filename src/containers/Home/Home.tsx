@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.scss";
 
-import { TrackList } from "../../components/TrackList";
+import { TrackListItem } from "../../components/TrackListItem";
 
 interface HomeProps {
   onTrackClick: any;
@@ -21,13 +21,18 @@ interface ITrack {
 export const Home: React.FC<HomeProps> = props => {
   return (
     <div className="Home">
-      <div>
-        <TrackList
-          tracks={props.tracks}
-          activeTrackID={props.activeTrackID}
-          onTrackClick={props.onTrackClick}
-          isPlaying={props.isPlaying}
-        />
+      <div className="TrackList">
+        {props.tracks.map(track => {
+          return (
+            <TrackListItem
+              key={track.id}
+              track={track}
+              onClick={() => props.onTrackClick(track.id)}
+              isActive={track.id === props.activeTrackID}
+              isPlaying={props.isPlaying}
+            />
+          );
+        })}
       </div>
     </div>
   );

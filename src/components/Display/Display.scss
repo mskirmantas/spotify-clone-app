@@ -1,0 +1,38 @@
+@import "../../theme.scss";
+
+.Display {
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 30vw;
+  min-width: 200px;
+}
+
+.now-playing {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 20px;
+  text-align: left;
+  cursor: default;
+}
+.playing-track-title {
+  display: flex;
+  padding-bottom: 5px;
+}
+
+h4 {
+  color: $color-white;
+}
+h5 {
+  font-weight: 400;
+  color: $color-light-grey;
+}
+
+.btn-like {
+  cursor: pointer;
+  margin: auto 20px;
+  color: $color-light-grey;
+  font-size: 17px;
+  &:hover {
+    color: $color-white;
+  }
+}

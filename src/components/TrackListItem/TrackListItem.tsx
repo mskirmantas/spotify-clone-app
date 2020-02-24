@@ -1,15 +1,15 @@
 import React from "react";
-import "./TrackList.scss";
+import "./TrackListItem.scss";
 
 import { Icon } from "antd";
 
-interface TrackListProps {
-  onTrackClick: any;
-  tracks: ITrack[];
-  activeTrackID: any;
-
+interface TrackListItemProps {
+  isActive: boolean;
+  onClick: any;
+  track: ITrack;
   isPlaying: boolean;
 }
+
 interface ITrack {
   artist: string;
   id: string;
@@ -19,15 +19,7 @@ interface ITrack {
   url: string;
 }
 
-interface TrackListItemProps {
-  isActive: boolean;
-  onClick: any;
-  track: ITrack;
-
-  isPlaying: boolean;
-}
-
-const TrackListItem: React.FC<TrackListItemProps> = props => {
+export const TrackListItem: React.FC<TrackListItemProps> = props => {
   return (
     <div className="TrackListItem" id={props.track.id} onClick={props.onClick}>
       <div className="flex-container">
@@ -61,24 +53,6 @@ const TrackListItem: React.FC<TrackListItemProps> = props => {
           </div>
         </div>
       </div>
-    </div>
-  );
-};
-
-export const TrackList: React.FC<TrackListProps> = props => {
-  return (
-    <div className="TrackList">
-      {props.tracks.map(track => {
-        return (
-          <TrackListItem
-            key={track.id}
-            track={track}
-            onClick={() => props.onTrackClick(track.id)}
-            isActive={track.id === props.activeTrackID}
-            isPlaying={props.isPlaying}
-          />
-        );
-      })}
     </div>
   );
 };

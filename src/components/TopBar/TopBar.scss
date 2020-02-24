@@ -18,13 +18,18 @@
   background-color: $color-black;
   height: 100%;
   font-weight: 500;
-  font-size: 1.75rem;
+
   align-items: center;
   &:hover {
     color: $color-white;
   }
-  p {
+  h1 {
     margin: 0;
+    margin-top: 5px;
+    font-family: "Raleway";
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: $color-white;
   }
 }
 
