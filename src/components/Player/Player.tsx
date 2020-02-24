@@ -45,25 +45,25 @@ export class Player extends React.Component<PlayerProps> {
     }
   }
 
-  startSetProgress(evt: any) {
+  startSetProgress(evt: React.MouseEvent) {
     this.setState({
       progressLiveUpdate: true
     });
     this.setProgress(evt);
   }
 
-  stopSetProgress(evt: any) {
+  stopSetProgress(evt: React.MouseEvent) {
     this.setState({
       progressLiveUpdate: false
     });
     this.setProgress(evt);
   }
 
-  setProgress(evt: any) {
+  setProgress(evt: React.MouseEvent) {
     let progressBar = document.getElementById("progress_bar");
     if (this.state.progressLiveUpdate && progressBar !== null) {
       let progress =
-        (evt.clientX - evt.target.offsetLeft) / progressBar.clientWidth;
+        (evt.clientX - offsetLeft(evt.target)) / progressBar.clientWidth;
       this.setState({
         progress: progress
       });
@@ -72,10 +72,10 @@ export class Player extends React.Component<PlayerProps> {
   }
 
   render() {
-    let currentTime = 0;
-    let totalTime = 0;
+    let currentTime: number = 0;
+    let totalTime: number = 0;
 
-    let audio = document.querySelector("audio");
+    let audio: HTMLAudioElement | null = document.querySelector("audio");
     if (audio) {
       if (this.is_progress_dirty) {
         this.is_progress_dirty = false;
@@ -171,11 +171,11 @@ function formatTime(s: number) {
   return formatToNumber(minutes) + ":" + formatToNumber(seconds);
 }
 
-// function offsetLeft(el: any) {
-//   let left = 0;
-//   while (el && el !== document) {
-//     left += el.offsetLeft;
-//     el = el.offsetParent;
-//   }
-//   return left;
-// }
+function offsetLeft(el: any) {
+  let left: number = 0;
+  while (el && el !== document) {
+    left += el.offsetLeft;
+    el = el.offsetParent;
+  }
+  return left;
+}

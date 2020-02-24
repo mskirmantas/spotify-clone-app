@@ -6,7 +6,7 @@ import { Icon } from "antd";
 export const VolumeControl: React.FC = () => {
   const [volume, setVolume] = React.useState<number>(0.75);
 
-  const changeVolume = (evt: any) => {
+  const changeVolume = (evt: React.MouseEvent) => {
     let volumeBar = document.getElementById("volume");
     if (volumeBar !== null) {
       let volumeLevel =

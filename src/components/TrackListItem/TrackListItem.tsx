@@ -5,7 +5,7 @@ import { Icon } from "antd";
 
 interface TrackListItemProps {
   isActive: boolean;
-  onClick: any;
+  onClick: () => void;
   track: ITrack;
   isPlaying: boolean;
 }
