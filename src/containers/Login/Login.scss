@@ -1,0 +1,96 @@
+@import "../../theme.scss";
+
+.Login {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  background-image: linear-gradient(
+      rgba(26, 26, 26, 0.897),
+      rgba(82, 82, 82, 0.198)
+    ),
+    url("https://images.unsplash.com/photo-1530288782965-fbad40327074?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+  background-size: cover;
+  height: calc(100vh - 80px);
+}
+.login-message {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  color: $color-white;
+  font-weight: 500;
+  font-size: 2.5rem;
+}
+
+// .login-form {
+//   align-self: center;
+//   border-radius: 30px;
+//   background-image: linear-gradient(
+//     rgba(64, 36, 90, 0.815),
+//     rgba(16, 14, 22, 0.726)
+//   );
+//   padding: 25px 50px;
+// }
+
+.login-form {
+  align-self: center;
+  border-radius: 30px;
+  background-image: linear-gradient(
+    rgba(139, 35, 168, 0.897),
+    rgba(29, 66, 134, 0.657)
+  );
+  padding: 25px 50px;
+}
+
+.form-input-field {
+  padding: 7px 0px;
+  display: flex;
+  flex-direction: column;
+
+  label {
+    letter-spacing: 0.025em;
+    align-self: flex-start;
+    color: $color-white;
+    padding-left: 20px;
+    padding-bottom: 5px;
+    font-size: 1.05rem;
+  }
+  input {
+    letter-spacing: 0.025em;
+    align-self: center;
+    color: $color-black-ish;
+    min-width: 400px;
+    -webkit-appearance: none !important;
+    box-shadow: none;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    background-color: $color-white;
+    border-radius: 30px;
+  }
+}
+
+.btn-login {
+  align-self: center;
+  margin-top: 20px;
+  height: 40px;
+
+  color: $color-white;
+  background-color: rgba(59, 59, 59, 0.609);
+  border-color: $color-white;
+  letter-spacing: 0.05em;
+  font-size: 1rem;
+  width: 100px;
+  &:hover {
+    color: $color-dark-grey;
+    background-color: $color-white;
+    border-color: transparent;
+  }
+  &:focus,
+  &:active {
+    background-color: $color-theme;
+    color: $color-white;
+    border-color: $color-theme;
+  }
+  &[ant-click-animating-without-extra-node]:after {
+    animation: 0s !important;
+  }
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.scss";
-import { Database } from "./config/firebase";
+import { Firebase, Database } from "./config/firebase";
 
 // Components
 import { TopBar } from "./components/TopBar";
@@ -10,7 +10,9 @@ import { Home } from "./containers/Home";
 import { Search } from "./containers/Search";
 import { Collection } from "./containers/Collection";
 import { FileUpload } from "./containers/FileUpload";
+
 import { BottomBar } from "./components/BottomBar";
+import { Login } from "./containers/Login";
 
 //Libraries
 import { BrowserRouter, Route, Switch } from "react-router-dom";
@@ -24,6 +26,7 @@ interface IState {
   activeTrackID: string | undefined;
   playingStatus: boolean;
   playHistory: string[];
+  user: any;
 }
 
 interface ITrack {
@@ -41,7 +44,8 @@ export default class App extends React.Component<Props, IState> {
     tracks: [],
     activeTrackID: undefined,
     playingStatus: false,
-    playHistory: []
+    playHistory: [],
+    user: {}
   };
 
   // Fetch DATA from DB: ------------------------------------------
@@ -61,6 +65,21 @@ export default class App extends React.Component<Props, IState> {
         });
       })
       .catch(error => console.log(error));
+
+    this.authListener();
+  }
+
+  authListener() {
+    Firebase.auth().onAuthStateChanged(user => {
+      console.log(user);
+      if (user) {
+        this.setState({ user });
+        localStorage.setItem("user", user.uid);
+      } else {
+        this.setState({ user: null });
+        localStorage.removeItem("user");
+      }
+    });
   }
 
   // On Track click: ---------------------------------------------------
@@ -122,54 +141,63 @@ export default class App extends React.Component<Props, IState> {
       <BrowserRouter>
         <div className="App">
           <Layout>
-            <TopBar />
-            <Layout>
-              <Sider>
-                <Navigation />
-                <ArtworkDisplay
+            <TopBar isUser={this.state.user} />
+
+            {this.state.user ? (
+              <div>
+                <Layout>
+                  <Sider>
+                    <Navigation />
+                    <ArtworkDisplay
+                      activeTrack={this.state.tracks.find(
+                        track => track.id === this.state.activeTrackID
+                      )}
+                    />
+                  </Sider>
+                  <Content>
+                    <Switch>
+                      <Route
+                        path="/home"
+                        render={Props => (
+                          <Home
+                            tracks={this.state.tracks}
+                            activeTrackID={this.state.activeTrackID}
+                            onTrackClick={this.handleSetActiveTrack}
+                            isPlaying={this.state.playingStatus}
+                          />
+                        )}
+                      />
+                      <Route
+                        path="/search"
+                        render={Props => (
+                          <Search
+                            tracks={this.state.tracks}
+                            activeTrackID={this.state.activeTrackID}
+                            onTrackClick={this.handleSetActiveTrack}
+                            isPlaying={this.state.playingStatus}
+                          />
+                        )}
+                      />
+
+                      <Route path="/collection" component={Collection} />
+                      <Route path="/upload" component={FileUpload} />
+                    </Switch>
+                  </Content>
+                </Layout>
+
+                <BottomBar
                   activeTrack={this.state.tracks.find(
                     track => track.id === this.state.activeTrackID
                   )}
+                  isPlaying={this.state.playingStatus}
+                  onPlayPause={this.togglePlayPause}
+                  onPlayPrev={this.handlePlayPrev}
+                  onPlayNext={this.handlePlayNext}
                 />
-              </Sider>
-              <Content>
-                <Switch>
-                  <Route
-                    path="/home"
-                    render={Props => (
-                      <Home
-                        tracks={this.state.tracks}
-                        activeTrackID={this.state.activeTrackID}
-                        onTrackClick={this.handleSetActiveTrack}
-                        isPlaying={this.state.playingStatus}
-                      />
-                    )}
-                  />
-                  <Route
-                    path="/search"
-                    render={Props => (
-                      <Search
-                        tracks={this.state.tracks}
-                        activeTrackID={this.state.activeTrackID}
-                        onTrackClick={this.handleSetActiveTrack}
-                        isPlaying={this.state.playingStatus}
-                      />
-                    )}
-                  />
-                  <Route path="/collection" component={Collection} />
-                  <Route path="/upload" component={FileUpload} />
-                </Switch>
-              </Content>
-            </Layout>
-            <BottomBar
-              activeTrack={this.state.tracks.find(
-                track => track.id === this.state.activeTrackID
-              )}
-              isPlaying={this.state.playingStatus}
-              onPlayPause={this.togglePlayPause}
-              onPlayPrev={this.handlePlayPrev}
-              onPlayNext={this.handlePlayNext}
-            />
+              </div>
+            ) : (
+              <Login />
+            )}
           </Layout>
         </div>
       </BrowserRouter>

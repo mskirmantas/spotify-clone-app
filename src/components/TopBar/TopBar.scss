@@ -5,7 +5,6 @@
   justify-content: space-between;
   padding: 0px 35px;
   height: 80px;
-
   background-color: $color-black-ish;
   color: $color-white;
   align-items: center;
@@ -49,7 +48,7 @@
   }
 }
 
-.btn-log-out.ant-btn {
+.btn-logout {
   margin: auto 0px;
   color: $color-light-grey;
   background-color: transparent;
