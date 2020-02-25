@@ -1,16 +1,25 @@
 # React Spotify app
 
-A Spotify player clone app created using **React** + **Typescript**  + **Ant Design** + **Firebase**
+A Spotify player clone app created using **React** + **Typescript** + **Firebase**
 
-**Note: The app development is still in progress**
+**`Note:` The app development is still in progress**
+
+![](src/images/react-spotify-0.PNG)
 
 ![](src/images/react-spotify-1.PNG)
 
 ![](src/images/react-spotify-2.PNG)
 
+![](src/images/react-spotify-3.PNG)
+
 ## Features
 
+- Login / User authentication
 - Player play/pause/forward/backward track
+- Progress bar / in-set progress update mode
+- Active track album artwork pop-up
+- Search track by Song, Artist or Album name
+- Listen to 30s demo track audio live
 
 ## To run the app with React
 
