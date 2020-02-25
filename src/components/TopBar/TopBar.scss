@@ -28,6 +28,7 @@
     font-family: "Raleway";
     font-weight: 900;
     font-size: 1.5rem;
+    letter-spacing: 0.01em;
     color: $color-white;
   }
 }
@@ -50,6 +51,7 @@
 
 .btn-logout {
   margin: auto 0px;
+  margin-left: 30px;
   color: $color-light-grey;
   background-color: transparent;
   border-color: $color-light-grey;
@@ -63,6 +65,9 @@
     background-color: $color-theme;
     color: $color-dark-grey;
     border-color: transparent;
+  }
+  &:active {
+    transform: scale(0.95);
   }
   &[ant-click-animating-without-extra-node]:after {
     animation: 0s !important;

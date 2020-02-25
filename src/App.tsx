@@ -157,7 +157,8 @@ export default class App extends React.Component<Props, IState> {
                   <Content>
                     <Switch>
                       <Route
-                        path="/home"
+                        path="/"
+                        exact
                         render={Props => (
                           <Home
                             tracks={this.state.tracks}

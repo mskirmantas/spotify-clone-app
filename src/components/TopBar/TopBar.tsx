@@ -4,7 +4,7 @@ import { Firebase } from "../../config/firebase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpotify } from "@fortawesome/free-brands-svg-icons";
 import { NavLink } from "react-router-dom";
-import { Layout, Icon, Button } from "antd";
+import { Layout, Button } from "antd";
 const { Sider, Content } = Layout;
 
 interface TopBarProps {
@@ -17,7 +17,7 @@ export const TopBar: React.FC<TopBarProps> = props => {
   return (
     <Layout>
       <Sider>
-        <NavLink className="logo" to="/home">
+        <NavLink className="logo" to="/" exact>
           <FontAwesomeIcon icon={faSpotify} className="logoIcon" spin />
           <h1>Spotify</h1>
         </NavLink>
@@ -36,11 +36,12 @@ export const TopBar: React.FC<TopBarProps> = props => {
             {/* <Icon className="history-nav-icon" type="left" />
             <Icon className="history-nav-icon" type="right" /> */}
           </div>
-          <div className="profile">
+
+          {props.isUser ? (
             <Button onClick={logout} className="btn-logout" shape="round">
               <b>Log Out</b>
             </Button>
-          </div>
+          ) : null}
         </div>
       </Content>
     </Layout>

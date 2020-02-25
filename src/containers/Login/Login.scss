@@ -12,32 +12,29 @@
   background-size: cover;
   height: calc(100vh - 80px);
 }
-.login-message {
-  margin-top: 50px;
-  margin-bottom: 50px;
+.landing-message {
+  margin-top: auto;
+  margin-bottom: auto;
   color: $color-white;
+  font-family: "Raleway";
   font-weight: 500;
   font-size: 2.5rem;
+  letter-spacing: 0.01em;
+  cursor: default;
+}
+.loginCard {
+  align-self: center;
+  margin-bottom: auto;
 }
 
-// .login-form {
-//   align-self: center;
-//   border-radius: 30px;
-//   background-image: linear-gradient(
-//     rgba(64, 36, 90, 0.815),
-//     rgba(16, 14, 22, 0.726)
-//   );
-//   padding: 25px 50px;
-// }
-
 .login-form {
-  align-self: center;
   border-radius: 30px;
   background-image: linear-gradient(
     rgba(139, 35, 168, 0.897),
     rgba(29, 66, 134, 0.657)
   );
   padding: 25px 50px;
+  box-shadow: 0px 10px 30px rgba(26, 26, 26, 0.349);
 }
 
 .form-input-field {
@@ -46,12 +43,13 @@
   flex-direction: column;
 
   label {
-    letter-spacing: 0.025em;
+    letter-spacing: 0.035em;
     align-self: flex-start;
     color: $color-white;
-    padding-left: 20px;
-    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-bottom: 7px;
     font-size: 1.05rem;
+    font-family: "Raleway";
   }
   input {
     letter-spacing: 0.025em;
@@ -71,26 +69,69 @@
 .btn-login {
   align-self: center;
   margin-top: 20px;
-  height: 40px;
-
+  height: 35px;
   color: $color-white;
-  background-color: rgba(59, 59, 59, 0.609);
-  border-color: $color-white;
-  letter-spacing: 0.05em;
+  background-color: $color-theme;
+  border-color: $color-theme;
+  letter-spacing: 0.03em;
+  font-weight: 500;
   font-size: 1rem;
   width: 100px;
   &:hover {
-    color: $color-dark-grey;
-    background-color: $color-white;
+    color: $color-white;
+    background-color: $color-theme;
     border-color: transparent;
+    transform: scale(0.99);
   }
   &:focus,
   &:active {
-    background-color: $color-theme;
     color: $color-white;
+    background-color: $color-theme;
     border-color: $color-theme;
+  }
+  &:active {
+    transform: scale(0.9);
   }
   &[ant-click-animating-without-extra-node]:after {
     animation: 0s !important;
+  }
+}
+
+.login-message {
+  color: $color-theme;
+  font-size: 1rem;
+  letter-spacing: 0.025em;
+  font-weight: 500;
+  height: 60px;
+  padding-top: 36px;
+  p {
+    padding: 7px 0px;
+    background-color: $color-black-ish;
+    color: $color-light-grey;
+    margin: 0 60px;
+  }
+}
+
+.landing-page-note {
+  background-color: $color-black;
+  margin-top: auto;
+  width: 100vw;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  p {
+    color: $color-white;
+    font-size: 0.9rem;
+    margin: 2px 10px;
+    letter-spacing: 0.035em;
+    cursor: default;
+    font-family: "Raleway";
+  }
+}
+.login-details {
+  display: flex;
+  justify-content: space-between;
+  p {
+    color: $color-light-grey;
   }
 }

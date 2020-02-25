@@ -8,7 +8,7 @@ export const Navigation: React.FC = () => {
   return (
     <div className="Navigation">
       <div className="home-tab">
-        <NavLink className="tab " to="/home">
+        <NavLink className="tab " to="/" exact>
           <Icon className="navlink-icon" type="home" />
           <p>Home</p>
         </NavLink>
