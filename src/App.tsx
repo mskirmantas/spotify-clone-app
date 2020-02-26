@@ -9,7 +9,6 @@ import { ArtworkDisplay } from "./components/ArtworkDisplay";
 import { Home } from "./containers/Home";
 import { Search } from "./containers/Search";
 import { Collection } from "./containers/Collection";
-
 import { BottomBar } from "./components/BottomBar";
 import { Login } from "./containers/Login";
 
@@ -49,9 +48,33 @@ export default class App extends React.Component<Props, IState> {
     favourites: []
   };
 
-  // Fetch DATA from DB: ------------------------------------------
+  componentWillMount() {
+    const localStorageItem = localStorage.getItem("tracks");
+    if (localStorageItem) {
+      this.setState({ tracks: JSON.parse(localStorageItem) });
+    }
+  }
 
   componentDidMount() {
+    this.authListener();
+    if (!localStorage.getItem("tracks")) {
+      this.fetchData();
+    }
+  }
+
+  authListener() {
+    Firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({ user });
+        localStorage.setItem("user", user.uid);
+      } else {
+        this.setState({ user: null });
+        localStorage.removeItem("user");
+      }
+    });
+  }
+
+  fetchData() {
     Database.collection("files")
       .orderBy("artist", "asc")
       .get()
@@ -66,24 +89,11 @@ export default class App extends React.Component<Props, IState> {
         });
       })
       .catch(error => console.log(error));
-
-    this.authListener();
   }
 
-  authListener() {
-    Firebase.auth().onAuthStateChanged(user => {
-      console.log(user);
-      if (user) {
-        this.setState({ user });
-        localStorage.setItem("user", user.uid);
-      } else {
-        this.setState({ user: null });
-        localStorage.removeItem("user");
-      }
-    });
+  componentWillUpdate(nextProps: Readonly<Props>, nextState: Readonly<IState>) {
+    localStorage.setItem("tracks", JSON.stringify(nextState.tracks));
   }
-
-  // On Track click: ---------------------------------------------------
 
   handleSetActiveTrack = (trackID: string) => {
     this.setState({ activeTrackID: trackID });
@@ -92,8 +102,6 @@ export default class App extends React.Component<Props, IState> {
       this.togglePlayPause();
     }
   };
-
-  // Player Buttons: ----------------------------------------------------
 
   togglePlayPause = () => {
     this.setState({ playingStatus: !this.state.playingStatus });
@@ -142,7 +150,6 @@ export default class App extends React.Component<Props, IState> {
         <div className="App">
           <Layout>
             <TopBar isUser={this.state.user} />
-
             {this.state.user ? (
               <div>
                 <Layout>
@@ -183,7 +190,6 @@ export default class App extends React.Component<Props, IState> {
                     </Switch>
                   </Content>
                 </Layout>
-
                 <BottomBar
                   activeTrack={this.state.tracks.find(
                     track => track.id === this.state.activeTrackID
