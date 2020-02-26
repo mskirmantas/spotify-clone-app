@@ -9,13 +9,13 @@
 
 .now-playing {
   display: flex;
-  flex-direction: column;
   padding: 0px 20px;
   text-align: left;
   cursor: default;
 }
 .playing-track-title {
   display: flex;
+  flex-direction: column;
   padding-bottom: 5px;
 }
 
@@ -29,7 +29,7 @@ h5 {
 
 .btn-like {
   cursor: pointer;
-  margin: auto 20px;
+  margin: auto 25px;
   color: $color-light-grey;
   font-size: 17px;
   &:hover {

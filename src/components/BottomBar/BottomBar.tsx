@@ -2,7 +2,7 @@ import React from "react";
 import "./BottomBar.scss";
 import { Display } from "../Display";
 import { Player } from "../Player";
-import { VolumeControl } from "../VolumeControl";
+// import { VolumeControl } from "../VolumeControl";
 
 interface BottomBarProps {
   activeTrack: ITrack | undefined;
@@ -33,7 +33,7 @@ export const BottomBar: React.FC<BottomBarProps> = props => {
         onPlayPrev={props.onPlayPrev}
         onPlayNext={props.onPlayNext}
       />
-      <VolumeControl />
+      {/* <VolumeControl /> */}
     </div>
   );
 };

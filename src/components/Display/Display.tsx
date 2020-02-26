@@ -24,9 +24,9 @@ export const Display: React.FC<DisplayProps> = props => {
         <div className="now-playing ">
           <div className="playing-track-title">
             <h4>{props.activeTrack.title}</h4>
-            <Icon className="btn-like" type="heart" />
+            <h5>{props.activeTrack.artist}</h5>
           </div>
-          <h5>{props.activeTrack.artist}</h5>
+          <Icon className="btn-like" type="heart" />
         </div>
       ) : null}
     </div>
