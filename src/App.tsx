@@ -9,7 +9,6 @@ import { ArtworkDisplay } from "./components/ArtworkDisplay";
 import { Home } from "./containers/Home";
 import { Search } from "./containers/Search";
 import { Collection } from "./containers/Collection";
-import { FileUpload } from "./containers/FileUpload";
 
 import { BottomBar } from "./components/BottomBar";
 import { Login } from "./containers/Login";
@@ -27,6 +26,7 @@ interface IState {
   playingStatus: boolean;
   playHistory: string[];
   user: any;
+  favourites: string[];
 }
 
 interface ITrack {
@@ -45,7 +45,8 @@ export default class App extends React.Component<Props, IState> {
     activeTrackID: undefined,
     playingStatus: false,
     playHistory: [],
-    user: {}
+    user: {},
+    favourites: []
   };
 
   // Fetch DATA from DB: ------------------------------------------
@@ -129,12 +130,11 @@ export default class App extends React.Component<Props, IState> {
     this.setState({ playingStatus: true });
   };
 
-  // getActiveTrack = () => {
-  //   return this.state.tracks.find(
-  //     track => track.id === this.state.activeTrackID
-  //   );
-  // };
-  // activeTrack = this.getActiveTrack();
+  toggleAddToFavourites = (trackID: string) => {
+    this.setState({
+      favourites: [...this.state.favourites, trackID]
+    });
+  };
 
   render() {
     return (
@@ -179,9 +179,7 @@ export default class App extends React.Component<Props, IState> {
                           />
                         )}
                       />
-
                       <Route path="/collection" component={Collection} />
-                      <Route path="/upload" component={FileUpload} />
                     </Switch>
                   </Content>
                 </Layout>

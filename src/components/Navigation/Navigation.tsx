@@ -25,12 +25,6 @@ export const Navigation: React.FC = () => {
           <p>Your Library</p>
         </NavLink>
       </div>
-      <div className="upload-tab">
-        <NavLink className="tab" to="/upload">
-          <Icon className="navlink-icon" type="upload" />
-          <p>Upload</p>
-        </NavLink>
-      </div>
     </div>
   );
 };
