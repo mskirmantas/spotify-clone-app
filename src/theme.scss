@@ -24,3 +24,9 @@ h6 {
 ::-webkit-scrollbar-thumb {
   background-color: hsla(0, 0%, 100%, 0.3);
 }
+
+@media screen and (max-width: 576px) {
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
+}

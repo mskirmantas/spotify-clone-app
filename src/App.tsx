@@ -153,7 +153,11 @@ export default class App extends React.Component<Props, IState> {
             {this.state.user ? (
               <div>
                 <Layout>
-                  <Sider>
+                  <Sider
+                    className="side-bar"
+                    breakpoint="sm"
+                    collapsedWidth="70"
+                  >
                     <Navigation />
                     <ArtworkDisplay
                       activeTrack={this.state.tracks.find(

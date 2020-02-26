@@ -12,3 +12,12 @@ body {
   font-family: "Roboto", sans-serif;
   letter-spacing: 0.015em;
 }
+.side-bar {
+  background-color: #101010;
+}
+
+@media screen and (max-width: 576px) {
+  .side-bar {
+    background-color: #1a1a1a;
+  }
+}

@@ -56,7 +56,7 @@ export class Login extends React.Component<LoginProps> {
     return (
       <div className="Login">
         <p className="landing-message">
-          Welcome to fake <b>Spotify</b>!
+          Welcome to fake <b>Spotify</b>
         </p>
         <div className="loginCard">
           <form className="login-form" onSubmit={this.handleLogin.bind(this)}>
@@ -93,7 +93,7 @@ export class Login extends React.Component<LoginProps> {
         </div>
 
         <div className="landing-page-note">
-          <p>
+          <p id="note">
             * For the purposes of this demo, please use login details provided :
           </p>
           <div className="login-details">

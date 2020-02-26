@@ -63,3 +63,25 @@
     font-weight: 500;
   }
 }
+
+@media screen and (max-width: 576px) {
+  .Player {
+    margin: 10px auto;
+    align-self: center;
+    width: 100vw;
+    height: 13vh;
+  }
+
+  .timeline {
+    justify-content: center;
+  }
+  .progress {
+    width: 55vw;
+  }
+  .player-controls {
+    margin-bottom: 5px;
+  }
+  .player-button {
+    font-size: 25px;
+  }
+}

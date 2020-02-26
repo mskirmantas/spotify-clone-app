@@ -24,6 +24,7 @@
 }
 .loginCard {
   align-self: center;
+  margin: 0 30px;
   margin-bottom: auto;
 }
 
@@ -133,5 +134,68 @@
   justify-content: space-between;
   p {
     color: $color-light-grey;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .Login {
+    height: 88vh;
+  }
+  .landing-message {
+    font-size: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    margin: auto 30px;
+    b {
+      font-size: 2rem;
+    }
+  }
+  .loginCard {
+    align-self: auto;
+  }
+  .login-form {
+    padding: 10px 0px 15px;
+    margin: 10px 0px;
+  }
+  .form-input-field input {
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.5rem;
+    min-width: auto;
+  }
+  .form-input-field label {
+    align-self: center;
+    padding-left: 0px;
+    padding-bottom: 3px;
+    font-size: 1rem;
+  }
+  .btn-login {
+    margin-top: 12px;
+    height: 30px;
+    width: auto;
+  }
+  .login-message {
+    padding-top: 0px;
+    font-size: 0.15rem;
+    font-weight: 400;
+    p {
+      padding: 5px 5px;
+      margin: 0 auto;
+    }
+  }
+  .landing-page-note {
+    flex-wrap: wrap;
+    padding: 15px 10px;
+    height: 80px;
+
+    p {
+      font-size: 0.1rem;
+      text-align: left;
+      margin: auto;
+      padding: 0px 10px;
+    }
+    #note {
+      display: none;
+    }
   }
 }

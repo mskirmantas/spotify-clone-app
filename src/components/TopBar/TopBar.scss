@@ -73,3 +73,24 @@
     animation: 0s !important;
   }
 }
+
+@media screen and (max-width: 576px) {
+  .TopBar {
+    height: 12vh;
+    background-color: $color-black;
+    padding: 0px;
+  }
+  .logo {
+    background-color: $color-black;
+    justify-content: flex-start;
+    padding-left: 18px;
+  }
+  .history-navigation {
+    display: none;
+  }
+  .btn-logout {
+    margin: 0;
+    margin-left: auto;
+    margin-right: 12px;
+  }
+}

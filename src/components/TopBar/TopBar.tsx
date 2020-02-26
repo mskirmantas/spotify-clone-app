@@ -28,7 +28,7 @@ export const TopBar: React.FC<TopBarProps> = props => {
           className="TopBar"
           style={
             props.isUser
-              ? { backgroundColor: "#1a1a1a" }
+              ? { backgroundColor: "" }
               : { backgroundColor: "#101010" }
           }
         >

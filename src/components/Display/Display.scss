@@ -6,6 +6,9 @@
   width: 30vw;
   min-width: 200px;
 }
+.album-artwork {
+  display: none;
+}
 
 .now-playing {
   display: flex;
@@ -16,7 +19,6 @@
 .playing-track-title {
   display: flex;
   flex-direction: column;
-  padding-bottom: 5px;
 }
 
 h4 {
@@ -34,5 +36,33 @@ h5 {
   font-size: 17px;
   &:hover {
     color: $color-white;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .Display {
+    width: 100vw;
+  }
+
+  .now-playing {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .album-artwork {
+    display: block;
+    width: 10vh;
+    height: 10vh;
+    margin-right: 20px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .playing-track-title {
+    margin: auto 0;
+  }
+  .btn-like {
+    margin-right: 10px;
+    margin-left: auto;
   }
 }

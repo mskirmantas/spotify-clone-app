@@ -54,3 +54,16 @@
 .TrackListItem:last-child::after {
   display: none;
 }
+
+@media screen and (max-width: 576px) {
+  .TrackListItem {
+    margin: 15px 30px;
+  }
+  .track-time,
+  .track-icon-btn {
+    display: none;
+  }
+  .track-title {
+    padding: 0px;
+  }
+}

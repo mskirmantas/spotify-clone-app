@@ -6,9 +6,6 @@
   background-image: linear-gradient($color-black-ish, $color-dark-grey-2);
   color: $color-white;
   padding: 0px 40px;
-  p {
-    font-size: 50px;
-  }
 }
 
 .search-field {
@@ -44,6 +41,35 @@
     }
     &:active {
       transform: scale(0.95);
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .Search {
+    height: 58vh;
+    padding: 0px;
+  }
+
+  .search-field {
+    // margin-left: 0px;
+    margin: 15px auto;
+    width: 70vw;
+
+    .search-icon {
+      color: $color-black-ish;
+      font-size: 20px;
+      margin-left: 15px;
+    }
+    input {
+      width: 50vw;
+    }
+    .search-icon {
+      font-size: 17px;
+    }
+    .clear-icon {
+      font-size: 15px;
+      margin-top: 2px;
     }
   }
 }

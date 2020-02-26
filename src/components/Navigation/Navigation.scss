@@ -27,3 +27,16 @@
   font-size: 20px;
   padding-right: 15px;
 }
+
+@media screen and (max-width: 576px) {
+  .Navigation {
+    height: 58vh;
+    background-color: $color-black-ish;
+  }
+  .tab {
+    p {
+      display: none;
+    }
+    margin: 10px 0 20px;
+  }
+}
