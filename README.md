@@ -8,8 +8,6 @@ A Spotify player clone app created using **React** + **Typescript** + **Firebase
 
 ![](src/images/react-spotify-1.PNG)
 
-![](src/images/react-spotify-2.PNG)
-
 ![](src/images/react-spotify-3.PNG)
 
 ## Features
