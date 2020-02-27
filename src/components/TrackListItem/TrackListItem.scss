@@ -26,6 +26,14 @@
   font-size: 20px;
   color: $color-white;
 }
+
+.like-status {
+  .like-btn {
+    padding-top: 10px;
+    margin: auto 20px;
+    font-size: 20px;
+  }
+}
 .track-title {
   padding: 0px 20px;
 }
@@ -65,5 +73,12 @@
   }
   .track-title {
     padding: 0px;
+  }
+  .like-status {
+    .like-btn {
+      margin-left: 0px;
+      margin-right: 25px;
+      font-size: 18px;
+    }
   }
 }
