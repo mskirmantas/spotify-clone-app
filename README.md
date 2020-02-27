@@ -18,6 +18,7 @@ A Spotify player clone app created using **React** + **Typescript** + **Firebase
 - Active track album artwork pop-up
 - Search track by Song, Artist or Album name
 - Listen to 30s demo track audio live
+- Add and remove tracks to the list of favourites
 
 ## To run the app with React
 
