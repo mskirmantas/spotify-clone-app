@@ -2,7 +2,7 @@
 
 A Spotify player clone app created using **React** + **Typescript** + **Firebase**
 
-**`Note:` The app development is still in progress**
+**`Note:` The app development is still in progress. Try the demo** https://react-spotify-app.netlify.com/
 
 ![](src/images/react-spotify-0.PNG)
 
