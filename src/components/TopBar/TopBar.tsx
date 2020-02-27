@@ -38,9 +38,11 @@ export const TopBar: React.FC<TopBarProps> = props => {
           </div>
 
           {props.isUser ? (
-            <Button onClick={logout} className="btn-logout" shape="round">
-              <b>Log Out</b>
-            </Button>
+            <NavLink to="/" exact>
+              <Button onClick={logout} className="btn-logout" shape="round">
+                <b>Log Out</b>
+              </Button>
+            </NavLink>
           ) : null}
         </div>
       </Content>
