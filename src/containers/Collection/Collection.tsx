@@ -27,7 +27,7 @@ export const Collection: React.FC<CollectionProps> = props => {
 
   return (
     <div className="Collection">
-      <p>Liked Songs</p>
+      <h2>Liked Songs</h2>
       <div className="TrackList">
         {favouriteTracks.map(favourite => {
           return (

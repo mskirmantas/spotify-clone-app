@@ -24,6 +24,7 @@ interface ITrack {
 export const Home: React.FC<HomeProps> = props => {
   return (
     <div className="Home">
+      <h2>Home</h2>
       <div className="TrackList">
         {props.tracks.map(track => {
           return (

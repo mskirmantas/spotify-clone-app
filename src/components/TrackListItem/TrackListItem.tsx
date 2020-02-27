@@ -45,7 +45,7 @@ export const TrackListItem: React.FC<TrackListItemProps> = props => {
             className="like-btn"
             type={props.isFavourite ? "heart" : "plus"}
             theme={props.isFavourite ? "filled" : "outlined"}
-            style={{ color: props.isFavourite ? "#ffffff" : "#575757" }}
+            style={{ color: props.isFavourite ? "#bbbbbb" : "" }}
             onClick={props.onLikeButton}
           />
         </div>

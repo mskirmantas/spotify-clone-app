@@ -18,8 +18,11 @@
   color: $color-grey;
   &:hover {
     color: $color-light-grey;
-    transform: scale(1.02);
+    transform: scale(1.05);
     transition: 0.1s;
+  }
+  &:focus {
+    transform: scale(0.93);
   }
 }
 .active-icon {
@@ -32,6 +35,15 @@
     padding-top: 10px;
     margin: auto 20px;
     font-size: 20px;
+    color: $color-grey;
+    &:hover {
+      color: $color-light-grey;
+      transform: scale(1.05);
+      transition: 0.1s;
+    }
+    &:focus {
+      transform: scale(0.9);
+    }
   }
 }
 .track-title {

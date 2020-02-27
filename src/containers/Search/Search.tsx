@@ -46,6 +46,7 @@ export class Search extends React.Component<SearchProps> {
 
     return (
       <div className="Search">
+        <h2>Search</h2>
         <div className="search-field">
           <Icon className="search-icon" type="search" />
           <input
