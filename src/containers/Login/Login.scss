@@ -137,7 +137,7 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 576px) {
   .Login {
     height: 88vh;
   }
@@ -147,7 +147,8 @@
     flex-direction: column;
     margin: auto 30px;
     b {
-      font-size: 2rem;
+      font-size: 2.4rem;
+      margin: 0;
     }
   }
   .loginCard {
@@ -160,7 +161,7 @@
   .form-input-field input {
     padding: 5px 15px;
     border-radius: 20px;
-    font-size: 0.5rem;
+    font-size: 0.685rem;
     min-width: auto;
   }
   .form-input-field label {
@@ -176,11 +177,10 @@
   }
   .login-message {
     padding-top: 0px;
-    font-size: 0.15rem;
+    font-size: 0.685rem;
     font-weight: 400;
     p {
       padding: 5px 5px;
-      margin: 0 auto;
     }
   }
   .landing-page-note {
@@ -189,7 +189,7 @@
     height: 80px;
 
     p {
-      font-size: 0.1rem;
+      font-size: 0.685rem;
       text-align: left;
       margin: auto;
       padding: 0px 10px;
