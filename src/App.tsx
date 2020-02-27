@@ -23,10 +23,10 @@ interface IState {
   tracks: ITrack[];
   activeTrackID: string | undefined;
   isPlaying: boolean;
-  isFavourite: boolean;
+  isLiked: boolean;
   playHistory: string[];
   user: any;
-  favourites: ITrack[];
+  favourites: string[];
 }
 
 interface ITrack {
@@ -45,28 +45,31 @@ export default class App extends React.Component<Props, IState> {
     favourites: [],
     activeTrackID: undefined,
     isPlaying: false,
-    isFavourite: false,
+    isLiked: false,
     playHistory: [],
     user: {}
   };
 
   componentWillMount() {
-    const localStorageItem = localStorage.getItem("tracks");
-    if (localStorageItem) {
-      this.setState({ tracks: JSON.parse(localStorageItem) });
+    const localTracks = localStorage.getItem("tracks");
+    if (localTracks) {
+      this.setState({ tracks: JSON.parse(localTracks) });
+    }
+    const localFavourites = localStorage.getItem("favourites");
+    if (localFavourites) {
+      this.setState({ favourites: JSON.parse(localFavourites) });
     }
   }
-  toggleAddFavourite = (track: ITrack) => {
-    const { favourites } = this.state;
-    if (
-      !favourites.find(alreadyFavourite => alreadyFavourite.id === track.id)
-    ) {
-      this.setState({ favourites: [...this.state.favourites, track] });
 
-      console.log(this.state.favourites);
-    } else {
+  // -----------------------------------------------------------------------------------
+
+  toggleLikeButton = (trackID: string) => {
+    this.setState({ isLiked: !this.state.isLiked });
+    const { favourites } = this.state;
+    this.setState({ favourites: [...this.state.favourites, trackID] });
+    if (favourites.find(alreadyFavouriteID => alreadyFavouriteID === trackID)) {
       this.setState({
-        favourites: favourites.filter(favTrack => favTrack.id !== track.id)
+        favourites: favourites.filter(favTrackID => favTrackID !== trackID)
       });
     }
   };
@@ -109,6 +112,7 @@ export default class App extends React.Component<Props, IState> {
 
   componentWillUpdate(nextProps: Readonly<Props>, nextState: Readonly<IState>) {
     localStorage.setItem("tracks", JSON.stringify(nextState.tracks));
+    localStorage.setItem("favourites", JSON.stringify(nextState.favourites));
   }
 
   handleSetActiveTrack = (trackID: string) => {
@@ -183,9 +187,10 @@ export default class App extends React.Component<Props, IState> {
                         render={Props => (
                           <Home
                             tracks={this.state.tracks}
+                            favourites={this.state.favourites}
                             activeTrackID={this.state.activeTrackID}
                             onTrackClick={this.handleSetActiveTrack}
-                            onAddFav={this.toggleAddFavourite}
+                            onLikeButton={this.toggleLikeButton}
                             isPlaying={this.state.isPlaying}
                           />
                         )}
@@ -195,9 +200,10 @@ export default class App extends React.Component<Props, IState> {
                         render={Props => (
                           <Search
                             tracks={this.state.tracks}
+                            favourites={this.state.favourites}
                             activeTrackID={this.state.activeTrackID}
                             onTrackClick={this.handleSetActiveTrack}
-                            onAddFav={this.toggleAddFavourite}
+                            onLikeButton={this.toggleLikeButton}
                             isPlaying={this.state.isPlaying}
                           />
                         )}
@@ -210,7 +216,7 @@ export default class App extends React.Component<Props, IState> {
                             favourites={this.state.favourites}
                             activeTrackID={this.state.activeTrackID}
                             onTrackClick={this.handleSetActiveTrack}
-                            onAddFav={this.toggleAddFavourite}
+                            onLikeButton={this.toggleLikeButton}
                             isPlaying={this.state.isPlaying}
                           />
                         )}
@@ -222,8 +228,9 @@ export default class App extends React.Component<Props, IState> {
                   activeTrack={this.state.tracks.find(
                     track => track.id === this.state.activeTrackID
                   )}
+                  favourites={this.state.favourites}
+                  onLikeButton={this.toggleLikeButton}
                   isPlaying={this.state.isPlaying}
-                  // onAddFav={this.toggleAddFavourite}
                   onPlayPause={this.togglePlayPause}
                   onPlayPrev={this.handlePlayPrev}
                   onPlayNext={this.handlePlayNext}

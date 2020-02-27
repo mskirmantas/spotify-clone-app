@@ -4,9 +4,9 @@ import { TrackListItem } from "../../components/TrackListItem";
 
 interface CollectionProps {
   onTrackClick: (trackID: string) => void;
-  onAddFav: (favourite: any) => void;
+  onLikeButton: (trackID: string) => void;
   tracks: ITrack[];
-  favourites: ITrack[];
+  favourites: string[];
   activeTrackID: any;
   isPlaying: boolean;
 }
@@ -17,21 +17,28 @@ interface ITrack {
   time: string;
   title: string;
   url: string;
+  cover: string;
 }
 
 export const Collection: React.FC<CollectionProps> = props => {
+  const favouriteTracks = props.tracks.filter(track =>
+    props.favourites.includes(track.id)
+  );
+
   return (
     <div className="Collection">
+      <p>Liked Songs</p>
       <div className="TrackList">
-        {props.favourites.map(favourite => {
+        {favouriteTracks.map(favourite => {
           return (
             <TrackListItem
               key={favourite.id}
               track={favourite}
               onTrackClick={() => props.onTrackClick(favourite.id)}
-              onAddFav={() => props.onAddFav(favourite)}
+              onLikeButton={() => props.onLikeButton(favourite.id)}
               isActive={favourite.id === props.activeTrackID}
               isPlaying={props.isPlaying}
+              isFavourite={props.favourites.includes(favourite.id)}
             />
           );
         })}

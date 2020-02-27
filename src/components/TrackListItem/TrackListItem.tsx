@@ -6,9 +6,10 @@ import { Icon } from "antd";
 interface TrackListItemProps {
   isActive: boolean;
   onTrackClick: () => void;
-  onAddFav: () => void;
+  onLikeButton: () => void;
   track: ITrack;
   isPlaying: boolean;
+  isFavourite: boolean;
 }
 
 interface ITrack {
@@ -18,6 +19,7 @@ interface ITrack {
   title: string;
   album: string;
   url: string;
+  cover: string;
 }
 
 export const TrackListItem: React.FC<TrackListItemProps> = props => {
@@ -38,7 +40,13 @@ export const TrackListItem: React.FC<TrackListItemProps> = props => {
             />
           )}
         </div>
-        <Icon className="btn-like" type="heart" onClick={props.onAddFav} />
+        <Icon
+          className="btn-like"
+          type={props.isFavourite ? "heart" : "plus"}
+          theme={props.isFavourite ? "filled" : "outlined"}
+          style={{ color: props.isFavourite ? "#ffffff" : "#575757" }}
+          onClick={props.onLikeButton}
+        />
 
         <div className="track-info" onClick={props.onTrackClick}>
           <div className="track-title">

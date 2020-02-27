@@ -5,7 +5,8 @@ import { Icon } from "antd";
 
 interface DisplayProps {
   activeTrack: ITrack | undefined;
-  // onAddFav: (favourite: any) => void;
+  favourites: string[];
+  onLikeButton: (trackID: string) => void;
 }
 
 interface ITrack {
@@ -19,10 +20,15 @@ interface ITrack {
 }
 
 export const Display: React.FC<DisplayProps> = props => {
+  const onLikeButtonToggle = () => {
+    if (props.activeTrack !== undefined) {
+      props.onLikeButton(props.activeTrack.id);
+    }
+  };
   return (
     <div className="Display">
       {props.activeTrack ? (
-        <div className="now-playing ">
+        <div className="now-playing " onClick={onLikeButtonToggle}>
           <div className="album-artwork">
             <img
               src={props.activeTrack ? props.activeTrack.cover : ""}
@@ -40,7 +46,16 @@ export const Display: React.FC<DisplayProps> = props => {
           <Icon
             className="btn-like"
             type="heart"
-            // onClick={() => props.onAddFav(props.activeTrack)}
+            theme={
+              props.favourites.includes(props.activeTrack.id)
+                ? "filled"
+                : "outlined"
+            }
+            style={{
+              color: props.favourites.includes(props.activeTrack.id)
+                ? "#1db954"
+                : "#575757"
+            }}
           />
         </div>
       ) : null}

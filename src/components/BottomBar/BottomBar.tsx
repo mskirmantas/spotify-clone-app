@@ -10,7 +10,8 @@ interface BottomBarProps {
   onPlayPause: () => void;
   onPlayPrev: () => void;
   onPlayNext: () => void;
-  // onAddFav: (favourite: ITrack) => void;
+  favourites: string[];
+  onLikeButton: (trackID: string) => void;
 }
 
 interface ITrack {
@@ -28,7 +29,8 @@ export const BottomBar: React.FC<BottomBarProps> = props => {
     <div className="BottomBar">
       <Display
         activeTrack={props.activeTrack}
-        // onAddFav={props.onAddFav}
+        favourites={props.favourites}
+        onLikeButton={props.onLikeButton}
       />
 
       <Player

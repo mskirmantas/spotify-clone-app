@@ -7,9 +7,10 @@ import { Icon } from "antd";
 interface SearchProps {
   onTrackClick: any;
   tracks: ITrack[];
+  favourites: string[];
   activeTrackID: any;
   isPlaying: boolean;
-  onAddFav: (favourite: any) => void;
+  onLikeButton: (trackID: string) => void;
 }
 interface ITrack {
   artist: string;
@@ -18,6 +19,7 @@ interface ITrack {
   time: string;
   title: string;
   url: string;
+  cover: string;
 }
 
 export class Search extends React.Component<SearchProps> {
@@ -69,9 +71,10 @@ export class Search extends React.Component<SearchProps> {
                   key={track.id}
                   track={track}
                   onTrackClick={() => this.props.onTrackClick(track.id)}
-                  onAddFav={() => this.props.onAddFav(track)}
+                  onLikeButton={() => this.props.onLikeButton(track.id)}
                   isActive={track.id === this.props.activeTrackID}
                   isPlaying={this.props.isPlaying}
+                  isFavourite={this.props.favourites.includes(track.id)}
                 />
               );
             })}
