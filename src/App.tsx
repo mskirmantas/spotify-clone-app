@@ -22,10 +22,11 @@ interface Props {}
 interface IState {
   tracks: ITrack[];
   activeTrackID: string | undefined;
-  playingStatus: boolean;
+  isPlaying: boolean;
+  isFavourite: boolean;
   playHistory: string[];
   user: any;
-  favourites: string[];
+  favourites: ITrack[];
 }
 
 interface ITrack {
@@ -41,11 +42,12 @@ interface ITrack {
 export default class App extends React.Component<Props, IState> {
   state: IState = {
     tracks: [],
+    favourites: [],
     activeTrackID: undefined,
-    playingStatus: false,
+    isPlaying: false,
+    isFavourite: false,
     playHistory: [],
-    user: {},
-    favourites: []
+    user: {}
   };
 
   componentWillMount() {
@@ -54,6 +56,20 @@ export default class App extends React.Component<Props, IState> {
       this.setState({ tracks: JSON.parse(localStorageItem) });
     }
   }
+  toggleAddFavourite = (track: ITrack) => {
+    const { favourites } = this.state;
+    if (
+      !favourites.find(alreadyFavourite => alreadyFavourite.id === track.id)
+    ) {
+      this.setState({ favourites: [...this.state.favourites, track] });
+
+      console.log(this.state.favourites);
+    } else {
+      this.setState({
+        favourites: favourites.filter(favTrack => favTrack.id !== track.id)
+      });
+    }
+  };
 
   componentDidMount() {
     this.authListener();
@@ -97,27 +113,27 @@ export default class App extends React.Component<Props, IState> {
 
   handleSetActiveTrack = (trackID: string) => {
     this.setState({ activeTrackID: trackID });
-    this.setState({ playingStatus: true });
+    this.setState({ isPlaying: true });
     if (this.state.activeTrackID === trackID) {
       this.togglePlayPause();
     }
   };
 
   togglePlayPause = () => {
-    this.setState({ playingStatus: !this.state.playingStatus });
+    this.setState({ isPlaying: !this.state.isPlaying });
     if (this.state.activeTrackID === undefined) {
       this.setState({ activeTrackID: this.state.tracks[0].id });
     }
     let audio = document.querySelector("audio");
     if (audio) {
-      this.state.playingStatus ? audio.pause() : audio.play();
+      this.state.isPlaying ? audio.pause() : audio.play();
     }
   };
 
   handlePlayPrev = () => {
     if (this.state.playHistory.length > 0) {
       this.setState({ activeTrackID: this.state.playHistory.pop() });
-      this.setState({ playingStatus: true });
+      this.setState({ isPlaying: true });
     }
   };
 
@@ -135,13 +151,7 @@ export default class App extends React.Component<Props, IState> {
       currentTrackIndex === totalTracks ? 0 : currentTrackIndex + 1;
     const nextTrack = this.state.tracks[nextTrackIndex].id;
     this.setState({ activeTrackID: nextTrack });
-    this.setState({ playingStatus: true });
-  };
-
-  toggleAddToFavourites = (trackID: string) => {
-    this.setState({
-      favourites: [...this.state.favourites, trackID]
-    });
+    this.setState({ isPlaying: true });
   };
 
   render() {
@@ -175,7 +185,8 @@ export default class App extends React.Component<Props, IState> {
                             tracks={this.state.tracks}
                             activeTrackID={this.state.activeTrackID}
                             onTrackClick={this.handleSetActiveTrack}
-                            isPlaying={this.state.playingStatus}
+                            onAddFav={this.toggleAddFavourite}
+                            isPlaying={this.state.isPlaying}
                           />
                         )}
                       />
@@ -186,11 +197,24 @@ export default class App extends React.Component<Props, IState> {
                             tracks={this.state.tracks}
                             activeTrackID={this.state.activeTrackID}
                             onTrackClick={this.handleSetActiveTrack}
-                            isPlaying={this.state.playingStatus}
+                            onAddFav={this.toggleAddFavourite}
+                            isPlaying={this.state.isPlaying}
                           />
                         )}
                       />
-                      <Route path="/collection" component={Collection} />
+                      <Route
+                        path="/collection"
+                        render={Props => (
+                          <Collection
+                            tracks={this.state.tracks}
+                            favourites={this.state.favourites}
+                            activeTrackID={this.state.activeTrackID}
+                            onTrackClick={this.handleSetActiveTrack}
+                            onAddFav={this.toggleAddFavourite}
+                            isPlaying={this.state.isPlaying}
+                          />
+                        )}
+                      />
                     </Switch>
                   </Content>
                 </Layout>
@@ -198,7 +222,8 @@ export default class App extends React.Component<Props, IState> {
                   activeTrack={this.state.tracks.find(
                     track => track.id === this.state.activeTrackID
                   )}
-                  isPlaying={this.state.playingStatus}
+                  isPlaying={this.state.isPlaying}
+                  // onAddFav={this.toggleAddFavourite}
                   onPlayPause={this.togglePlayPause}
                   onPlayPrev={this.handlePlayPrev}
                   onPlayNext={this.handlePlayNext}

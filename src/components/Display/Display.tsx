@@ -1,10 +1,11 @@
 import React from "react";
 import "./Display.scss";
 
-// import { Icon } from "antd";
+import { Icon } from "antd";
 
 interface DisplayProps {
   activeTrack: ITrack | undefined;
+  // onAddFav: (favourite: any) => void;
 }
 
 interface ITrack {
@@ -36,7 +37,11 @@ export const Display: React.FC<DisplayProps> = props => {
             <h4>{props.activeTrack.title}</h4>
             <h5>{props.activeTrack.artist}</h5>
           </div>
-          {/* <Icon className="btn-like" type="heart" /> */}
+          <Icon
+            className="btn-like"
+            type="heart"
+            // onClick={() => props.onAddFav(props.activeTrack)}
+          />
         </div>
       ) : null}
     </div>

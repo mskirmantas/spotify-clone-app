@@ -9,6 +9,7 @@ interface SearchProps {
   tracks: ITrack[];
   activeTrackID: any;
   isPlaying: boolean;
+  onAddFav: (favourite: any) => void;
 }
 interface ITrack {
   artist: string;
@@ -67,7 +68,8 @@ export class Search extends React.Component<SearchProps> {
                 <TrackListItem
                   key={track.id}
                   track={track}
-                  onClick={() => this.props.onTrackClick(track.id)}
+                  onTrackClick={() => this.props.onTrackClick(track.id)}
+                  onAddFav={() => this.props.onAddFav(track)}
                   isActive={track.id === this.props.activeTrackID}
                   isPlaying={this.props.isPlaying}
                 />

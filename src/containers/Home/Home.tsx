@@ -4,7 +4,8 @@ import "./Home.scss";
 import { TrackListItem } from "../../components/TrackListItem";
 
 interface HomeProps {
-  onTrackClick: any;
+  onTrackClick: (trackID: string) => void;
+  onAddFav: (favourite: any) => void;
   tracks: ITrack[];
   activeTrackID: any;
   isPlaying: boolean;
@@ -27,7 +28,8 @@ export const Home: React.FC<HomeProps> = props => {
             <TrackListItem
               key={track.id}
               track={track}
-              onClick={() => props.onTrackClick(track.id)}
+              onTrackClick={() => props.onTrackClick(track.id)}
+              onAddFav={() => props.onAddFav(track)}
               isActive={track.id === props.activeTrackID}
               isPlaying={props.isPlaying}
             />

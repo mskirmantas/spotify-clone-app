@@ -19,12 +19,12 @@ export const Navigation: React.FC = () => {
           <p>Search</p>
         </NavLink>
       </div>
-      {/* <div className="collection-tab">
+      <div className="collection-tab">
         <NavLink className="tab" to="/collection">
           <Icon className="navlink-icon" type="align-right" rotate={90} />
           <p>Your Library</p>
         </NavLink>
-      </div> */}
+      </div>
     </div>
   );
 };
