@@ -14,6 +14,7 @@ export const TopBar: React.FC<TopBarProps> = props => {
   const logout = () => {
     Firebase.auth().signOut();
   };
+
   return (
     <Layout>
       <Sider>

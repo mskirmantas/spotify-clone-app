@@ -1,25 +1,15 @@
 import React from "react";
 import "./TrackListItem.scss";
-
+import { ITrack } from "../../App";
 import { Icon } from "antd";
 
 interface TrackListItemProps {
-  isActive: boolean;
   onTrackClick: () => void;
   onLikeButton: () => void;
   track: ITrack;
+  isActive: boolean;
   isPlaying: boolean;
   isFavourite: boolean;
-}
-
-interface ITrack {
-  artist: string;
-  id: string;
-  time: string;
-  title: string;
-  album: string;
-  url: string;
-  cover: string;
 }
 
 export const TrackListItem: React.FC<TrackListItemProps> = props => {

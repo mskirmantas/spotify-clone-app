@@ -1,6 +1,5 @@
 import React from "react";
 import "./Navigation.scss";
-
 import { NavLink } from "react-router-dom";
 import { Icon } from "antd";
 

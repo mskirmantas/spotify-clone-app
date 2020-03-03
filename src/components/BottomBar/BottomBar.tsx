@@ -3,25 +3,16 @@ import "./BottomBar.scss";
 import { Display } from "../Display";
 import { Player } from "../Player";
 // import { VolumeControl } from "../VolumeControl";
+import { ITrack } from "../../App";
 
 interface BottomBarProps {
-  activeTrack: ITrack | undefined;
-  isPlaying: boolean;
   onPlayPause: () => void;
   onPlayPrev: () => void;
   onPlayNext: () => void;
-  favourites: string[];
   onLikeButton: (trackID: string) => void;
-}
-
-interface ITrack {
-  artist: string;
-  album: string;
-  id: string;
-  time: string;
-  title: string;
-  url: string;
-  cover: string;
+  favourites: string[];
+  activeTrack: ITrack | undefined;
+  isPlaying: boolean;
 }
 
 export const BottomBar: React.FC<BottomBarProps> = props => {

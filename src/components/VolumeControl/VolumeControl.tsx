@@ -1,6 +1,5 @@
 import React from "react";
 import "./VolumeControl.scss";
-
 import { Icon } from "antd";
 
 export const VolumeControl: React.FC = () => {

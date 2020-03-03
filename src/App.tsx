@@ -19,7 +19,7 @@ const { Sider, Content } = Layout;
 
 interface Props {}
 
-interface IState {
+interface AppState {
   tracks: ITrack[];
   activeTrackID: string | undefined;
   isPlaying: boolean;
@@ -29,7 +29,7 @@ interface IState {
   favourites: string[];
 }
 
-interface ITrack {
+export interface ITrack {
   artist: string;
   album: string;
   id: string;
@@ -39,8 +39,8 @@ interface ITrack {
   cover: string;
 }
 
-export default class App extends React.Component<Props, IState> {
-  state: IState = {
+export default class App extends React.Component<Props, AppState> {
+  state: AppState = {
     tracks: [],
     favourites: [],
     activeTrackID: undefined,
@@ -110,7 +110,10 @@ export default class App extends React.Component<Props, IState> {
       .catch(error => console.log(error));
   }
 
-  componentWillUpdate(nextProps: Readonly<Props>, nextState: Readonly<IState>) {
+  componentWillUpdate(
+    nextProps: Readonly<Props>,
+    nextState: Readonly<AppState>
+  ) {
     localStorage.setItem("tracks", JSON.stringify(nextState.tracks));
     localStorage.setItem("favourites", JSON.stringify(nextState.favourites));
   }

@@ -1,23 +1,14 @@
 import React from "react";
 import "./Player.scss";
-
+import { ITrack } from "../../App";
 import { Icon } from "antd";
 
 interface PlayerProps {
-  isPlaying: boolean;
   onPlayPause: () => void;
   onPlayPrev: () => void;
   onPlayNext: () => void;
   activeTrack: ITrack | undefined;
-}
-interface ITrack {
-  artist: string;
-  album: string;
-  id: string;
-  time: string;
-  title: string;
-  url: string;
-  cover: string;
+  isPlaying: boolean;
 }
 
 export class Player extends React.Component<PlayerProps> {
@@ -25,7 +16,6 @@ export class Player extends React.Component<PlayerProps> {
     progress: 0,
     progressLiveUpdate: false
   };
-
   is_progress_dirty = false;
   interval_id = setInterval(this.onUpdate.bind(this), 250);
 

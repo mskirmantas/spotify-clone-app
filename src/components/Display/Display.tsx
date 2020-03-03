@@ -1,22 +1,12 @@
 import React from "react";
 import "./Display.scss";
-
+import { ITrack } from "../../App";
 import { Icon } from "antd";
 
 interface DisplayProps {
   activeTrack: ITrack | undefined;
   favourites: string[];
   onLikeButton: (trackID: string) => void;
-}
-
-interface ITrack {
-  artist: string;
-  album: string;
-  id: string;
-  time: string;
-  title: string;
-  url: string;
-  cover: string;
 }
 
 export const Display: React.FC<DisplayProps> = props => {

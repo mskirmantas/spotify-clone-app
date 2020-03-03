@@ -1,26 +1,9 @@
 import React from "react";
 import "./Collection.scss";
 import { TrackListItem } from "../../components/TrackListItem";
+import { IContentPageProps } from "../Home";
 
-interface CollectionProps {
-  onTrackClick: (trackID: string) => void;
-  onLikeButton: (trackID: string) => void;
-  tracks: ITrack[];
-  favourites: string[];
-  activeTrackID: any;
-  isPlaying: boolean;
-}
-interface ITrack {
-  artist: string;
-  album: string;
-  id: string;
-  time: string;
-  title: string;
-  url: string;
-  cover: string;
-}
-
-export const Collection: React.FC<CollectionProps> = props => {
+export const Collection: React.FC<IContentPageProps> = props => {
   const favouriteTracks = props.tracks.filter(track =>
     props.favourites.includes(track.id)
   );

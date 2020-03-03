@@ -1,18 +1,9 @@
 import React from "react";
 import "./ArtworkDisplay.scss";
+import { ITrack } from "../../App";
 
 interface ArtworkDisplayProps {
   activeTrack: ITrack | undefined;
-}
-
-interface ITrack {
-  artist: string;
-  album: string;
-  id: string;
-  time: string;
-  title: string;
-  url: string;
-  cover: string;
 }
 
 export const ArtworkDisplay: React.FC<ArtworkDisplayProps> = props => {
