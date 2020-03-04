@@ -1,20 +1,10 @@
 import React from "react";
-import "./App.scss";
 import { Firebase, Database } from "./config/firebase";
-
-// Components
-import { TopBar } from "./components/TopBar";
-import { Navigation } from "./components/Navigation";
-import { ArtworkDisplay } from "./components/ArtworkDisplay";
-import { Home } from "./containers/Home";
-import { Search } from "./containers/Search";
-import { Collection } from "./containers/Collection";
-import { BottomBar } from "./components/BottomBar";
-import { Login } from "./containers/Login";
-
-//Libraries
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Layout } from "antd";
+import { TopBar, Navigation, ArtworkDisplay, BottomBar } from "./components/";
+import { Home, Search, Collection, Login } from "./pages";
+import "./App.scss";
 const { Sider, Content } = Layout;
 
 interface Props {}
@@ -60,8 +50,6 @@ export default class App extends React.Component<Props, AppState> {
       this.setState({ favourites: JSON.parse(localFavourites) });
     }
   }
-
-  // -----------------------------------------------------------------------------------
 
   toggleLikeButton = (trackID: string) => {
     this.setState({ isLiked: !this.state.isLiked });

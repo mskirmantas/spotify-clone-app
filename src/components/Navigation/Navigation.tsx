@@ -1,7 +1,7 @@
 import React from "react";
-import "./Navigation.scss";
 import { NavLink } from "react-router-dom";
 import { Icon } from "antd";
+import "./Navigation.scss";
 
 export const Navigation: React.FC = () => {
   return (

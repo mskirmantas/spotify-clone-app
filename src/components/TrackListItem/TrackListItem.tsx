@@ -1,7 +1,7 @@
 import React from "react";
-import "./TrackListItem.scss";
-import { ITrack } from "../../App";
 import { Icon } from "antd";
+import { ITrack } from "../../App";
+import "./TrackListItem.scss";
 
 interface TrackListItemProps {
   onTrackClick: () => void;

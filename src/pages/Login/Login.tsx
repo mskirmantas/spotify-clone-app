@@ -1,8 +1,7 @@
 import React, { FormEvent } from "react";
-import "./Login.scss";
-// import { Link } from "react-router-dom";
 import { Firebase } from "../../config/firebase";
 import { Button } from "antd";
+import "./Login.scss";
 
 export const Login: React.FC = () => {
   const [email, setEmail] = React.useState<string>("");

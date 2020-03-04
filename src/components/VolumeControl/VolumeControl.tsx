@@ -1,6 +1,6 @@
 import React from "react";
-import "./VolumeControl.scss";
 import { Icon } from "antd";
+import "./VolumeControl.scss";
 
 export const VolumeControl: React.FC = () => {
   const [volume, setVolume] = React.useState<number>(0.75);

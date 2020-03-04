@@ -1,7 +1,7 @@
 import React from "react";
-import "./Display.scss";
-import { ITrack } from "../../App";
 import { Icon } from "antd";
+import { ITrack } from "../../App";
+import "./Display.scss";
 
 interface DisplayProps {
   activeTrack: ITrack | undefined;

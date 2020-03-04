@@ -1,7 +1,7 @@
 import React from "react";
-import "./Collection.scss";
-import { TrackListItem } from "../../components/TrackListItem";
+import { TrackListItem } from "../../components";
 import { IContentPageProps } from "../Home";
+import "./Collection.scss";
 
 export const Collection: React.FC<IContentPageProps> = props => {
   const favouriteTracks = props.tracks.filter(track =>

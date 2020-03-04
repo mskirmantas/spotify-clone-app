@@ -1,7 +1,7 @@
 import React from "react";
-import "./Player.scss";
-import { ITrack } from "../../App";
 import { Icon } from "antd";
+import { ITrack } from "../../App";
+import "./Player.scss";
 
 interface PlayerProps {
   onPlayPause: () => void;

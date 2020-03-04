@@ -1,7 +1,7 @@
 import React from "react";
-import "./Home.scss";
-import { TrackListItem } from "../../components/TrackListItem";
+import { TrackListItem } from "../../components";
 import { ITrack } from "../../App";
+import "./Home.scss";
 
 export interface IContentPageProps {
   onTrackClick: (trackID: string) => void;

@@ -1,9 +1,8 @@
 import React from "react";
-import "./BottomBar.scss";
 import { Display } from "../Display";
 import { Player } from "../Player";
-// import { VolumeControl } from "../VolumeControl";
 import { ITrack } from "../../App";
+import "./BottomBar.scss";
 
 interface BottomBarProps {
   onPlayPause: () => void;

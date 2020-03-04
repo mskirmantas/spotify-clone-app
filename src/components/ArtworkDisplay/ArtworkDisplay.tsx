@@ -1,6 +1,6 @@
 import React from "react";
-import "./ArtworkDisplay.scss";
 import { ITrack } from "../../App";
+import "./ArtworkDisplay.scss";
 
 interface ArtworkDisplayProps {
   activeTrack: ITrack | undefined;

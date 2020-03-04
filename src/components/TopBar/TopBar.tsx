@@ -1,10 +1,10 @@
 import React from "react";
-import "./TopBar.scss";
 import { Firebase } from "../../config/firebase";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpotify } from "@fortawesome/free-brands-svg-icons";
-import { NavLink } from "react-router-dom";
 import { Layout, Button } from "antd";
+import "./TopBar.scss";
 const { Sider, Content } = Layout;
 
 interface TopBarProps {
