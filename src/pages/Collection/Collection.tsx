@@ -1,6 +1,8 @@
 import React from "react";
+
 import { TrackListItem } from "../../components";
 import { IContentPageProps } from "../Home";
+
 import "./Collection.scss";
 
 export const Collection: React.FC<IContentPageProps> = props => {

@@ -1,6 +1,8 @@
 import React from "react";
+
 import { TrackListItem } from "../../components";
 import { ITrack } from "../../App";
+
 import "./Home.scss";
 
 export interface IContentPageProps {

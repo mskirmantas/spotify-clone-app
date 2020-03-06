@@ -1,13 +1,15 @@
 import React from "react";
 import { Icon } from "antd";
+
 import { ITrack } from "../../App";
+
 import "./Player.scss";
 
 interface PlayerProps {
   onPlayPause: () => void;
   onPlayPrev: () => void;
   onPlayNext: () => void;
-  activeTrack: ITrack | undefined;
+  activeTrack?: ITrack;
   isPlaying: boolean;
 }
 

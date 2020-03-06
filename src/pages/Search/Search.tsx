@@ -1,7 +1,9 @@
 import React from "react";
 import { Icon } from "antd";
+
 import { TrackListItem } from "../../components";
 import { IContentPageProps } from "../Home";
+
 import "./Search.scss";
 
 export const Search: React.FC<IContentPageProps> = props => {

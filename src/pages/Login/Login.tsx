@@ -1,6 +1,8 @@
 import React, { FormEvent } from "react";
-import { Firebase } from "../../config/firebase";
 import { Button } from "antd";
+
+import { Firebase } from "../../config/firebase";
+
 import "./Login.scss";
 
 export const Login: React.FC = () => {

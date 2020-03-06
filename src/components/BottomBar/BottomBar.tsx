@@ -10,7 +10,7 @@ interface BottomBarProps {
   onPlayNext: () => void;
   onLikeButton: (trackID: string) => void;
   favourites: string[];
-  activeTrack: ITrack | undefined;
+  activeTrack?: ITrack;
   isPlaying: boolean;
 }
 

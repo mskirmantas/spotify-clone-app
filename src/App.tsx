@@ -1,17 +1,20 @@
 import React from "react";
-import { Firebase, Database } from "./config/firebase";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Layout } from "antd";
+
+import { Firebase, Database } from "./config/firebase";
 import { TopBar, Navigation, ArtworkDisplay, BottomBar } from "./components/";
 import { Home, Search, Collection, Login } from "./pages";
+
 import "./App.scss";
+
 const { Sider, Content } = Layout;
 
 interface Props {}
 
 interface AppState {
   tracks: ITrack[];
-  activeTrackID: string | undefined;
+  activeTrackID?: string;
   isPlaying: boolean;
   isLiked: boolean;
   playHistory: string[];
@@ -40,36 +43,15 @@ export default class App extends React.Component<Props, AppState> {
     user: null
   };
 
-  componentWillMount() {
-    const localTracks = localStorage.getItem("tracks");
-    if (localTracks) {
-      this.setState({ tracks: JSON.parse(localTracks) });
-    }
-    const localFavourites = localStorage.getItem("favourites");
-    if (localFavourites) {
-      this.setState({ favourites: JSON.parse(localFavourites) });
-    }
-  }
-
-  toggleLikeButton = (trackID: string) => {
-    this.setState({ isLiked: !this.state.isLiked });
-    const { favourites } = this.state;
-    this.setState({ favourites: [...this.state.favourites, trackID] });
-    if (favourites.find(alreadyFavouriteID => alreadyFavouriteID === trackID)) {
-      this.setState({
-        favourites: favourites.filter(favTrackID => favTrackID !== trackID)
-      });
-    }
-  };
-
   componentDidMount() {
     this.authListener();
+    this.getLocalStorage();
     if (!localStorage.getItem("tracks")) {
       this.fetchData();
     }
   }
 
-  authListener() {
+  authListener = () => {
     Firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.setState({ user: user.uid });
@@ -79,9 +61,20 @@ export default class App extends React.Component<Props, AppState> {
         localStorage.removeItem("user");
       }
     });
-  }
+  };
 
-  fetchData() {
+  getLocalStorage = () => {
+    const localTracks = localStorage.getItem("tracks");
+    if (localTracks) {
+      this.setState({ tracks: JSON.parse(localTracks) });
+    }
+    const localFavourites = localStorage.getItem("favourites");
+    if (localFavourites) {
+      this.setState({ favourites: JSON.parse(localFavourites) });
+    }
+  };
+
+  fetchData = () => {
     Database.collection("files")
       .orderBy("artist", "asc")
       .get()
@@ -96,14 +89,16 @@ export default class App extends React.Component<Props, AppState> {
         });
       })
       .catch(error => console.log(error));
-  }
+  };
 
-  componentWillUpdate(
-    nextProps: Readonly<Props>,
+  componentDidUpdate(
+    _nextProps: Readonly<Props>,
     nextState: Readonly<AppState>
   ) {
-    localStorage.setItem("tracks", JSON.stringify(nextState.tracks));
-    localStorage.setItem("favourites", JSON.stringify(nextState.favourites));
+    if (this.state !== nextState) {
+      localStorage.setItem("tracks", JSON.stringify(nextState.tracks));
+      localStorage.setItem("favourites", JSON.stringify(nextState.favourites));
+    }
   }
 
   handleSetActiveTrack = (trackID: string) => {
@@ -147,6 +142,17 @@ export default class App extends React.Component<Props, AppState> {
     const nextTrack = this.state.tracks[nextTrackIndex].id;
     this.setState({ activeTrackID: nextTrack });
     this.setState({ isPlaying: true });
+  };
+
+  toggleLikeButton = (trackID: string) => {
+    this.setState({ isLiked: !this.state.isLiked });
+    const { favourites } = this.state;
+    this.setState({ favourites: [...this.state.favourites, trackID] });
+    if (favourites.find(alreadyFavouriteID => alreadyFavouriteID === trackID)) {
+      this.setState({
+        favourites: favourites.filter(favTrackID => favTrackID !== trackID)
+      });
+    }
   };
 
   render() {

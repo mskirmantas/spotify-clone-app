@@ -1,10 +1,12 @@
 import React from "react";
 import { Icon } from "antd";
+
 import { ITrack } from "../../App";
+
 import "./Display.scss";
 
 interface DisplayProps {
-  activeTrack: ITrack | undefined;
+  activeTrack?: ITrack;
   favourites: string[];
   onLikeButton: (trackID: string) => void;
 }
