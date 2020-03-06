@@ -10,7 +10,7 @@ export interface IContentPageProps {
   onLikeButton: (trackID: string) => void;
   tracks: ITrack[];
   favourites: string[];
-  activeTrackID: string | undefined;
+  activeTrackID?: string;
   isPlaying: boolean;
 }
 
