@@ -15,7 +15,7 @@ interface AppState {
   isPlaying: boolean;
   isLiked: boolean;
   playHistory: string[];
-  user: any;
+  user: string | null;
   favourites: string[];
 }
 
@@ -37,7 +37,7 @@ export default class App extends React.Component<Props, AppState> {
     isPlaying: false,
     isLiked: false,
     playHistory: [],
-    user: {}
+    user: null
   };
 
   componentWillMount() {
@@ -72,7 +72,7 @@ export default class App extends React.Component<Props, AppState> {
   authListener() {
     Firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        this.setState({ user });
+        this.setState({ user: user.uid });
         localStorage.setItem("user", user.uid);
       } else {
         this.setState({ user: null });
@@ -154,7 +154,7 @@ export default class App extends React.Component<Props, AppState> {
       <BrowserRouter>
         <div className="App">
           <Layout>
-            <TopBar isUser={this.state.user} />
+            <TopBar isUser={this.state.user !== null} />
             {this.state.user ? (
               <div>
                 <Layout>

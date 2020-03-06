@@ -33,10 +33,7 @@ export const TopBar: React.FC<TopBarProps> = props => {
               : { backgroundColor: "#101010" }
           }
         >
-          <div className="history-navigation">
-            {/* <Icon className="history-nav-icon" type="left" />
-            <Icon className="history-nav-icon" type="right" /> */}
-          </div>
+          <div className="history-navigation"></div>
 
           {props.isUser ? (
             <NavLink className="logout" to="/" exact>
