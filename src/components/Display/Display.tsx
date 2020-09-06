@@ -11,7 +11,7 @@ interface DisplayProps {
   onLikeButton: (trackID: string) => void;
 }
 
-export const Display: React.FC<DisplayProps> = props => {
+export const Display: React.FC<DisplayProps> = (props) => {
   const onLikeButtonToggle = () => {
     if (props.activeTrack !== undefined) {
       props.onLikeButton(props.activeTrack.id);
@@ -35,20 +35,21 @@ export const Display: React.FC<DisplayProps> = props => {
             <h4>{props.activeTrack.title}</h4>
             <h5>{props.activeTrack.artist}</h5>
           </div>
-          <Icon
-            className="btn-like"
-            type="heart"
-            theme={
-              props.favourites.includes(props.activeTrack.id)
-                ? "filled"
-                : "outlined"
-            }
-            style={{
-              color: props.favourites.includes(props.activeTrack.id)
-                ? "#1db954"
-                : "#575757"
-            }}
-          />
+          <div className="btn-like">
+            <Icon
+              type="heart"
+              theme={
+                props.favourites.includes(props.activeTrack.id)
+                  ? "filled"
+                  : "outlined"
+              }
+              style={{
+                color: props.favourites.includes(props.activeTrack.id)
+                  ? "#1db954"
+                  : "inherit",
+              }}
+            />
+          </div>
         </div>
       ) : null}
     </div>

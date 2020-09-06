@@ -14,7 +14,7 @@ interface TrackListItemProps {
   isFavourite: boolean;
 }
 
-export const TrackListItem: React.FC<TrackListItemProps> = props => {
+export const TrackListItem: React.FC<TrackListItemProps> = (props) => {
   return (
     <div className="TrackListItem" id={props.track.id}>
       <div className="flex-container">
@@ -23,7 +23,7 @@ export const TrackListItem: React.FC<TrackListItemProps> = props => {
             <Icon
               className="track-icon-btn active-icon"
               type={props.isPlaying ? "pause" : "caret-right"}
-            ></Icon>
+            />
           ) : (
             <Icon
               className="track-icon-btn"

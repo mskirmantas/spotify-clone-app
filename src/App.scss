@@ -12,8 +12,18 @@ body {
   font-family: "Roboto", sans-serif;
   letter-spacing: 0.015em;
 }
+
 .side-bar {
   background-color: #101010;
+}
+
+.ant-btn {
+  color: #101010;
+  &:hover {
+    color: #ffffff;
+    background-color: #1db954;
+    border-color: transparent;
+  }
 }
 
 @media screen and (max-width: 576px) {

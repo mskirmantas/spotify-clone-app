@@ -50,6 +50,12 @@
 }
 .track-title {
   padding: 0px 20px;
+  h4 {
+    color: $color-white;
+  }
+  h5 {
+    color: $color-light-grey;
+  }
 }
 .track-info {
   width: 100%;
@@ -61,6 +67,7 @@
   margin: auto 0px;
   h5 {
     font-weight: 500;
+    color: $color-light-grey;
   }
 }
 

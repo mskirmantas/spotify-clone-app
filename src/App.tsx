@@ -40,22 +40,20 @@ export default class App extends React.Component<Props, AppState> {
     isPlaying: false,
     isLiked: false,
     playHistory: [],
-    user: null
+    user: null,
   };
 
   componentDidMount() {
     this.authListener();
-    this.getLocalStorage();
-    if (!localStorage.getItem("tracks")) {
-      this.fetchData();
-    }
   }
 
   authListener = () => {
-    Firebase.auth().onAuthStateChanged(user => {
+    Firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({ user: user.uid });
         localStorage.setItem("user", user.uid);
+        this.getLocalStorage();
+        this.fetchData();
       } else {
         this.setState({ user: null });
         localStorage.removeItem("user");
@@ -78,17 +76,17 @@ export default class App extends React.Component<Props, AppState> {
     Database.collection("files")
       .orderBy("artist", "asc")
       .get()
-      .then(snapshot => {
+      .then((snapshot) => {
         const newFiles: any = [];
-        snapshot.forEach(doc => {
+        snapshot.forEach((doc) => {
           const data = doc.data();
           newFiles.push(data);
         });
         this.setState({
-          tracks: newFiles
+          tracks: newFiles,
         });
       })
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
   };
 
   componentDidUpdate(
@@ -130,11 +128,11 @@ export default class App extends React.Component<Props, AppState> {
   handlePlayNext = () => {
     if (this.state.activeTrackID) {
       this.setState({
-        playHistory: [...this.state.playHistory, this.state.activeTrackID]
+        playHistory: [...this.state.playHistory, this.state.activeTrackID],
       });
     }
     const currentTrackIndex = this.state.tracks.findIndex(
-      track => track.id === this.state.activeTrackID
+      (track) => track.id === this.state.activeTrackID
     );
     const totalTracks = this.state.tracks.length - 1;
     const nextTrackIndex =
@@ -148,9 +146,11 @@ export default class App extends React.Component<Props, AppState> {
     this.setState({ isLiked: !this.state.isLiked });
     const { favourites } = this.state;
     this.setState({ favourites: [...this.state.favourites, trackID] });
-    if (favourites.find(alreadyFavouriteID => alreadyFavouriteID === trackID)) {
+    if (
+      favourites.find((alreadyFavouriteID) => alreadyFavouriteID === trackID)
+    ) {
       this.setState({
-        favourites: favourites.filter(favTrackID => favTrackID !== trackID)
+        favourites: favourites.filter((favTrackID) => favTrackID !== trackID),
       });
     }
   };
@@ -172,7 +172,7 @@ export default class App extends React.Component<Props, AppState> {
                     <Navigation />
                     <ArtworkDisplay
                       activeTrack={this.state.tracks.find(
-                        track => track.id === this.state.activeTrackID
+                        (track) => track.id === this.state.activeTrackID
                       )}
                     />
                   </Sider>
@@ -181,7 +181,7 @@ export default class App extends React.Component<Props, AppState> {
                       <Route
                         path="/"
                         exact
-                        render={Props => (
+                        render={(Props) => (
                           <Home
                             tracks={this.state.tracks}
                             favourites={this.state.favourites}
@@ -194,7 +194,7 @@ export default class App extends React.Component<Props, AppState> {
                       />
                       <Route
                         path="/search"
-                        render={Props => (
+                        render={(Props) => (
                           <Search
                             tracks={this.state.tracks}
                             favourites={this.state.favourites}
@@ -207,7 +207,7 @@ export default class App extends React.Component<Props, AppState> {
                       />
                       <Route
                         path="/collection"
-                        render={Props => (
+                        render={(Props) => (
                           <Collection
                             tracks={this.state.tracks}
                             favourites={this.state.favourites}
@@ -223,7 +223,7 @@ export default class App extends React.Component<Props, AppState> {
                 </Layout>
                 <BottomBar
                   activeTrack={this.state.tracks.find(
-                    track => track.id === this.state.activeTrackID
+                    (track) => track.id === this.state.activeTrackID
                   )}
                   favourites={this.state.favourites}
                   onLikeButton={this.toggleLikeButton}

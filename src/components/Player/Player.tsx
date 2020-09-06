@@ -16,7 +16,7 @@ interface PlayerProps {
 export class Player extends React.Component<PlayerProps> {
   state = {
     progress: 0,
-    progressLiveUpdate: false
+    progressLiveUpdate: false,
   };
   is_progress_dirty = false;
   interval_id = setInterval(this.onUpdate.bind(this), 250);
@@ -25,7 +25,7 @@ export class Player extends React.Component<PlayerProps> {
     let audio = document.querySelector("audio");
     if (audio && !this.is_progress_dirty) {
       this.setState({
-        progress: audio.currentTime / audio.duration
+        progress: audio.currentTime / audio.duration,
       });
     }
     this.handleTrackEnded();
@@ -39,14 +39,14 @@ export class Player extends React.Component<PlayerProps> {
 
   startSetProgress(evt: React.MouseEvent) {
     this.setState({
-      progressLiveUpdate: true
+      progressLiveUpdate: true,
     });
     this.setProgress(evt);
   }
 
   stopSetProgress(evt: React.MouseEvent) {
     this.setState({
-      progressLiveUpdate: false
+      progressLiveUpdate: false,
     });
     this.setProgress(evt);
   }
@@ -57,7 +57,7 @@ export class Player extends React.Component<PlayerProps> {
       let progress =
         (evt.clientX - offsetLeft(evt.target)) / progressBar.clientWidth;
       this.setState({
-        progress: progress
+        progress: progress,
       });
       this.is_progress_dirty = true;
     }
@@ -86,12 +86,13 @@ export class Player extends React.Component<PlayerProps> {
           />
         ) : null}
         <div className="player-controls">
-          <Icon
-            className="player-button"
-            type="step-backward"
-            theme="filled"
-            onClick={this.props.onPlayPrev}
-          />
+          <div className="player-button">
+            <Icon
+              type="step-backward"
+              theme="filled"
+              onClick={this.props.onPlayPrev}
+            />
+          </div>
           <div className="player-button" onClick={this.props.onPlayPause}>
             {this.props.isPlaying ? (
               <Icon className="btn-pause" type="pause" />
@@ -99,12 +100,13 @@ export class Player extends React.Component<PlayerProps> {
               <Icon className="btn-play" type="caret-right" theme="filled" />
             )}
           </div>
-          <Icon
-            className="player-button"
-            type="step-forward"
-            theme="filled"
-            onClick={this.props.onPlayNext}
-          />
+          <div className="player-button">
+            <Icon
+              type="step-forward"
+              theme="filled"
+              onClick={this.props.onPlayNext}
+            />
+          </div>
         </div>
         <div className="timeline">
           <div className="time">
@@ -115,7 +117,6 @@ export class Player extends React.Component<PlayerProps> {
             id="progress_bar"
             className="progress"
             onMouseDown={this.startSetProgress.bind(this)}
-            // onMouseMove={this.setProgress.bind(this)}
             onMouseUp={this.stopSetProgress.bind(this)}
           >
             <div

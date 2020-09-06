@@ -21,12 +21,14 @@
   flex-direction: column;
 }
 
-h4 {
-  color: $color-white;
-}
-h5 {
-  font-weight: 400;
-  color: $color-light-grey;
+.playing-track-title {
+  h4 {
+    color: $color-white;
+  }
+  h5 {
+    font-weight: 400;
+    color: $color-light-grey;
+  }
 }
 
 .btn-like {
