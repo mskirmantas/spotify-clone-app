@@ -2,6 +2,8 @@
 
 A Spotify player clone app created using **React** + **Typescript** + **Firebase**
 
+Try it yourself at: https://react-spotify-app.netlify.app/
+
 ![](src/images/react-spotify-0.PNG)
 
 ![](src/images/react-spotify-1.PNG)
@@ -21,6 +23,6 @@ A Spotify player clone app created using **React** + **Typescript** + **Firebase
 ## To run the app with React
 
 1. Run `npm install`
-2. Run `npm start`
+2. Run `npm run start`
 3. Open the app in `http://localhost:3000`
 
