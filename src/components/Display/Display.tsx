@@ -22,14 +22,16 @@ export const Display: React.FC<DisplayProps> = (props) => {
       {props.activeTrack ? (
         <div className="now-playing " onClick={onLikeButtonToggle}>
           <div className="album-artwork">
-            <img
-              src={props.activeTrack ? props.activeTrack.cover : ""}
-              alt={
-                props.activeTrack
-                  ? props.activeTrack.album + "album artwork"
-                  : ""
-              }
-            />
+           {props.activeTrack && (
+              <img
+                src={props.activeTrack ? props.activeTrack.cover : ""}
+                alt={
+                  props.activeTrack
+                    ? props.activeTrack.album + "album artwork"
+                    : ""
+                }
+              />
+            )}
           </div>
           <div className="playing-track-title">
             <h4>{props.activeTrack.title}</h4>
